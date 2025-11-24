@@ -9,7 +9,6 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { QuoteCategory, Quote } from '../../../types/types.js';
 import { AttachmentBuilder, Colors, EmbedBuilder } from 'discord.js';
-import axios from 'axios';
 import { Logger } from 'robo.js';
 
 const logger = new Logger();
@@ -59,41 +58,51 @@ const createQuotesEmbedMessage = async (category: QuoteCategory, quote: Quote) =
 
 const getRandomFunnyQuote = async (): Promise<Quote> => {
   try {
-    const response = await axios.get("https://quotes.rest/qod?category=funny&language=en", {
+    const response = await fetch("https://quotes.rest/qod?category=funny&language=en", {
       headers: {
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
         "X-TheySaidSo-Api-Secret": `${process.env.THEY_SAID_SO_API_KEY}`,
         "Authorization": `Bearer ${process.env.THEY_SAID_SO_API_KEY}`,
       }
     });
-    const data = response.data.contents.quotes[0];
+    if (!response.ok) {
+      throw new Error(`Failed to fetch funny quote: ${response.status} ${response.statusText}`);
+    }
+    const json = await response.json();
+    const data = (json as any).contents.quotes[0];
     return {
       author: data.author,
       text: data.quote
     };
   } catch (error) {
     logger.error(`getRandomFunnyQuote -> error`);
-    logger.error(error)
+    logger.error(error);
+    throw error;
   }
 }
 
 export const getInpirationalQuoteOfTheDay = async (): Promise<Quote> => {
   try {
-    const response = await axios.get("https://quotes.rest/qod?category=inspire&language=en", {
+    const response = await fetch("https://quotes.rest/qod?category=inspire&language=en", {
       headers: {
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
         "X-TheySaidSo-Api-Secret": `${process.env.THEY_SAID_SO_API_KEY}`,
         "Authorization": `Bearer ${process.env.THEY_SAID_SO_API_KEY}`,
       }
     });
-    const data = response.data.contents.quotes[0];
+    if (!response.ok) {
+      throw new Error(`Failed to fetch inspirational quote: ${response.status} ${response.statusText}`);
+    }
+    const json = await response.json();
+    const data = (json as any).contents.quotes[0];
     return {
       author: data.author,
       text: data.quote
     };
   } catch (error) {
     logger.error(`getInpirationalQuoteOfTheDay -> error`);
-    logger.error(error)
+    logger.error(error);
+    throw error;
   }
 }
 
