@@ -1,7 +1,7 @@
-import { Flashcore, type CommandConfig } from 'robo.js';
+import { Flashcore, createCommandConfig } from 'robo.js';
 import { ActionRowBuilder, ChatInputCommandInteraction, GuildChannel, ModalBuilder, TextInputBuilder, TextInputStyle } from 'discord.js';
 
-export const config: CommandConfig = {
+export const config = createCommandConfig({
   description: 'Send a message to a channel',
   options: [
     {
@@ -11,7 +11,7 @@ export const config: CommandConfig = {
       required: true
     },
   ]
-}
+} as const)
 
 export const messageModal = async () => {
   const modal = new ModalBuilder()

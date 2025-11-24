@@ -1,5 +1,5 @@
-import 'dotenv/config'
-import type { CommandConfig } from 'robo.js'
+import { createCommandConfig } from 'robo.js'
+import type { CommandOptions } from 'robo.js'
 import { portal } from 'robo.js';
 import { Modules } from '../types/types.js'
 
@@ -11,7 +11,7 @@ for (const [key, value] of Object.entries(Modules)) {
   });
 }
 
-export const config: CommandConfig = {
+export const config = createCommandConfig({
   description: 'Sets enabled or disabled state of a module',
   options: [
     {
@@ -36,13 +36,13 @@ export const config: CommandConfig = {
       ]
     }
   ],
-}
+} as const)
 
-export default async (event) => {
+export default async (event, options: CommandOptions<typeof config>) => {
   try {
 
-    const module = event.options.get('module').value;
-    const state = Boolean(Number(event.options.get('state').value));
+    const module = options.module as string;
+    const state = Boolean(Number(options.state));
     portal.module(module).setEnabled(state);
     if (state) {
       return `${module} is enabled.`

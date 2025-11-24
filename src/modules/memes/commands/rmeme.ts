@@ -1,10 +1,9 @@
-import 'dotenv/config'
-import type { CommandConfig } from 'robo.js'
+import { createCommandConfig } from 'robo.js'
 import {load} from 'cheerio';
 
-export const config: CommandConfig = {
+export const config = createCommandConfig({
   description: 'Sends a random meme from programmerhumor.io',
-}
+} as const)
 
 export default async (event) => {
   const requestUrl = "https://programmerhumor.io/?bimber_random_post=true";

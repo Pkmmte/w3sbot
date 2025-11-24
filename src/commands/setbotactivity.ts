@@ -1,5 +1,6 @@
-import { type CommandConfig } from 'robo.js';
+import { createCommandConfig } from 'robo.js';
 import { ChatInputCommandInteraction, ActivityType } from 'discord.js';
+import { type CommandOptions } from 'robo.js';
 
 const generateActivities = (): ({name: string, value: number})[] => {
   const activityArray = [];
@@ -13,7 +14,7 @@ const generateActivities = (): ({name: string, value: number})[] => {
   return activityArray; 
 }
 
-export const config: CommandConfig = {
+export const config = createCommandConfig({
   description: 'Set bot activity',
   options: [
     {
@@ -30,17 +31,14 @@ export const config: CommandConfig = {
       required: false
     }
   ]
-}
+} as const)
 
-export default async (interaction: ChatInputCommandInteraction) => {
-  const activity = interaction.options.getNumber('activity');
-  const text = interaction.options.getString('text');
-
+export default async (interaction: ChatInputCommandInteraction, options: CommandOptions<typeof config>) => {
   interaction.client.user.setPresence({
     activities: [
       {
-        name: text ? text : '🤩',
-        type: activity
+        name: options.text ? options.text : '🤩',
+        type: options.activity
       },
     ]
   });

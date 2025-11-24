@@ -1,7 +1,7 @@
-import 'dotenv/config'
-import { Flashcore, type CommandConfig } from 'robo.js'
+import { Flashcore, createCommandConfig } from 'robo.js'
+import type { CommandOptions } from 'robo.js'
 
-export const config: CommandConfig = {
+export const config = createCommandConfig({
   description: 'Sets a channel as media only channel',
   options: [
     {
@@ -10,10 +10,10 @@ export const config: CommandConfig = {
       description: 'Choose a channel'
     }
   ]
-}
+} as const)
 
-export default async (interaction) => {
-  const channelId = interaction.options._hoistedOptions[0].value.match(/\d+/)[0];
+export default async (interaction, options: CommandOptions<typeof config>) => {
+  const channelId = options.channel.match(/\d+/)[0];
   const channelName = interaction.guild.channels.cache.get(channelId).name;
 
 	try {

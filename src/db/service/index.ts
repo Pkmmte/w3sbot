@@ -1,9 +1,10 @@
-import * as dotenv from 'dotenv';
-dotenv.config();
+import { Env } from 'robo.js';
 import { fileURLToPath } from 'url';
 import { join, dirname } from 'path';
 import Database from 'better-sqlite3';
 import { CollectedMessage, CollectedMessageCategory, QuoteInstance } from '../../types/types';
+
+Env.loadSync()
 
 const currentDir = dirname(fileURLToPath(import.meta.url));
 const dbPath = join(currentDir, '../../../../database/database.db');

@@ -1,5 +1,5 @@
-import 'dotenv/config'
-import type { CommandConfig } from 'robo.js'
+import { createCommandConfig } from 'robo.js'
+import type { CommandOptions } from 'robo.js'
 import { createOrStartQuotesJob } from '../utils/utils.js';
 import { QuoteInstance, QuoteCategory } from '../../../types/types.js';
 
@@ -20,7 +20,7 @@ for (const category in QuoteCategory) {
   })
 }
 
-export const config: CommandConfig = {
+export const config = createCommandConfig({
   description: 'Starts CRON job for sending quotes in set interval',
   options: [
     {
@@ -41,18 +41,18 @@ export const config: CommandConfig = {
       choices: timeChoices
     },
   ]
-}
+} as const)
 
-export default async (event) => {
-  const channelId = event.options._hoistedOptions[0].value.replace(/[<>\#]/g, '');
-  const category = event.options._hoistedOptions[1].value;
-  const time = Number(event.options._hoistedOptions[2].value);
+export default async (event, options: CommandOptions<typeof config>) => {
+  const channelId = (options.channel as string).replace(/[<>\#]/g, '');
+  const category = options.category as QuoteCategory;
+  const time = Number(options.time);
 
   const data: QuoteInstance = {
     channelId: channelId,
     category: category,
     isRunning: 1,
-    cronId: category,
+    cronId: category as string,
     cronHour: time
   }
 

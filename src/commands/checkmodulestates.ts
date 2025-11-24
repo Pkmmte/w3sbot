@@ -1,12 +1,11 @@
-import 'dotenv/config'
-import type { CommandConfig } from 'robo.js'
+import { createCommandConfig } from 'robo.js'
 import { portal } from 'robo.js';
 import { Modules, PortalModule } from '../types/types.js'
 import {generateEmbedMessage} from './utils/modules-message-template.js';
 
-export const config: CommandConfig = {
+export const config = createCommandConfig({
   description: 'Gets a list of all modules and their states'
-}
+} as const)
 
 export default async (event) => {
   try {

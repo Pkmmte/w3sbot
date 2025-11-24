@@ -1,6 +1,7 @@
-import * as dotenv from 'dotenv';
-dotenv.config();
+import { Env } from 'robo.js';
 import Database from 'better-sqlite3';
+
+Env.loadSync()
 const db = new Database('./database/database.db');
 
 const createDatabase = () => {

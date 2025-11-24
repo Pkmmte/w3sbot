@@ -1,6 +1,7 @@
-import { CommandConfig } from "robo.js";
+import { createCommandConfig } from "robo.js";
+import type { CommandOptions } from 'robo.js'
 
-export const config: CommandConfig = {
+export const config = createCommandConfig({
   description: 'Delete bulk of messages in a channel',
   options: [
     {
@@ -14,12 +15,12 @@ export const config: CommandConfig = {
       description: 'Number of messages'
     }
   ]
-}
+} as const)
 
-export default async (interaction) => {
+export default async (interaction, options: CommandOptions<typeof config>) => {
   try {
-    const channelId = interaction.options._hoistedOptions[0].value.match(/\d+/)[0];
-    const messagesNumber = interaction.options._hoistedOptions[1].value.match(/\d+/)[0];
+    const channelId = options.channel.match(/\d+/)[0];
+    const messagesNumber = options.number.match(/\d+/)[0];
 
     const channel = interaction.guild.channels.cache.get(channelId);
     return channel.bulkDelete(Number(messagesNumber))

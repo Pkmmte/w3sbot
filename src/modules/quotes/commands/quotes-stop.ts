@@ -1,11 +1,7 @@
-import 'dotenv/config'
-import type { CommandConfig } from 'robo.js'
-import { createOrStartQuotesJob, stopAndDeleteQuotesJob } from '../utils/utils.js';
-import { ToadScheduler, Task, CronJob, SimpleIntervalJob } from 'toad-scheduler';
-import { QuoteInstance, QuoteCategory } from '../../../types/types.js';
-import dbService from '../../../db/service/index.js';
-
-const scheduler = new ToadScheduler();
+import { createCommandConfig } from 'robo.js'
+import type { CommandOptions } from 'robo.js'
+import { stopAndDeleteQuotesJob } from '../utils/utils.js';
+import { QuoteCategory } from '../../../types/types.js';
 
 const categoryChoices = [];
 for (const category in QuoteCategory) {
@@ -15,7 +11,7 @@ for (const category in QuoteCategory) {
   })
 }
 
-export const config: CommandConfig = {
+export const config = createCommandConfig({
   description: 'STOPS CRON job for active quotes category',
   options: [
     {
@@ -25,10 +21,10 @@ export const config: CommandConfig = {
       choices: categoryChoices
     },
   ]
-}
+} as const)
 
-export default async (event) => {
-  const category = event.options._hoistedOptions[0].value;
+export default async (event, options: CommandOptions<typeof config>) => {
+  const category = options.category as string;
   try {
     await stopAndDeleteQuotesJob(category);
     return { content: `Quotes instance for category ${category} stopped`, ephemeral: true }
