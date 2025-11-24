@@ -1,35 +1,36 @@
 {
-  "name": "w3schools-discord-bot",
-  "version": "1.4.1",
-  "main": "index.js",
-  "license": "MIT",
-  "scripts": {
-    "build": "robo build",
-    "deploy": "robo deploy",
-    "dev": "robo dev",
-    "doctor": "robo doctor",
-    "invite": "robo invite",
-    "lint": "npm lint:eslint && npm lint:style",
-    "lint:eslint": "eslint . --ext js,jsx,ts,tsx",
-    "lint:style": "prettier --write .",
-    "start": "robo start --mode production",
-    "mbuild": "node migration.js && robo build"
-  },
-  "dependencies": {
-    "@discordjs/voice": "^0.19.0",
-    "better-sqlite3": "^9.2.2",
-    "cheerio": "^1.1.2",
-    "croner": "^8.0.0",
-    "discord.js": "^14.25.1",
-    "duckduckgo-search": "^1.0.7",
-    "libsodium-wrappers": "^0.7.15",
-    "robo.js": "^0.10.31",
-    "toad-scheduler": "^3.1.0"
-  },
-  "devDependencies": {
-    "@swc/core": "^1.15.3",
-    "@types/node": "^24.10.1",
-    "typescript": "^5.9.3"
-  },
-  "type": "module"
+	"name": "w3schools-discord-bot",
+	"version": "1.4.1",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"build": "robo build",
+		"deploy": "robo deploy",
+		"dev": "robo dev",
+		"doctor": "robo doctor",
+		"invite": "robo invite",
+		"lint": "npm lint:eslint && npm lint:style",
+		"lint:eslint": "eslint . --ext js,jsx,ts,tsx",
+		"lint:style": "prettier --write .",
+		"start": "robo start --mode production",
+		"mbuild": "node migration.js && robo build"
+	},
+	"dependencies": {
+		"@discordjs/voice": "^0.19.0",
+		"better-sqlite3": "^9.2.2",
+		"cheerio": "^1.1.2",
+		"croner": "^8.0.0",
+		"discord.js": "^14.25.1",
+		"duckduckgo-search": "^1.0.7",
+		"libsodium-wrappers": "^0.7.15",
+		"robo.js": "^0.10.31",
+		"toad-scheduler": "^3.1.0"
+	},
+	"devDependencies": {
+		"@swc/core": "^1.15.3",
+		"@types/node": "^24.10.1",
+		"prettier": "^3.6.2",
+		"typescript": "^5.9.3"
+	},
+	"type": "module"
 }

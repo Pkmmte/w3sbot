@@ -1,32 +1,32 @@
 {
-  "modules": [
-    {
-      "name": "audit-log",
-      "isEnabled": true
-    },
-    {
-      "name": "w3sgoogle",
-      "isEnabled": true
-    },
-    {
-      "name": "media-channels",
-      "isEnabled": true
-    },
-    {
-      "name": "collector",
-      "isEnabled": true
-    },
-    {
-      "name": "memes",
-      "isEnabled": true
-    },
-    {
-      "name": "quotes",
-      "isEnabled": true
-    },
-    {
-      "name": "bulkdelete",
-      "isEnabled": true
-    }
-  ]
+	"modules": [
+		{
+			"name": "audit-log",
+			"isEnabled": true
+		},
+		{
+			"name": "w3sgoogle",
+			"isEnabled": true
+		},
+		{
+			"name": "media-channels",
+			"isEnabled": true
+		},
+		{
+			"name": "collector",
+			"isEnabled": true
+		},
+		{
+			"name": "memes",
+			"isEnabled": true
+		},
+		{
+			"name": "quotes",
+			"isEnabled": true
+		},
+		{
+			"name": "bulkdelete",
+			"isEnabled": true
+		}
+	]
 }
