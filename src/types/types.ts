@@ -25,7 +25,7 @@ export interface QuoteInstance {
 	id?: string
 	channelId: string
 	category: QuoteCategory
-	isRunning: number
+	isRunning: boolean
 	cronId?: string
 	cronHour: number
 	createdAt?: number

@@ -1,135 +1,41 @@
-import { Env } from 'robo.js'
-import { fileURLToPath } from 'url'
-import { join, dirname } from 'path'
-import Database from 'better-sqlite3'
-import { CollectedMessage, CollectedMessageCategory, QuoteInstance } from '../../types/types'
-
-Env.loadSync()
-
-const currentDir = dirname(fileURLToPath(import.meta.url))
-const dbPath = join(currentDir, '../../../../database/database.db')
-
-const db = new Database(dbPath, {
-	fileMustExist: true
-})
+import { Flashcore } from 'robo.js'
+import { QuoteInstance } from '../../types/types'
 
 const dbService = {
-	isModuleEnabled: async (name) => {
-		const query = db.prepare('SELECT * FROM Modules WHERE moduleName = ?').get(name)
-		console.log(query)
-		if (query.isEnabled === 1) return true
-		return false
+	isModuleEnabled: async (name: string) => {
+		const modules = (await Flashcore.get('modules')) as Record<string, boolean>
+		return modules?.[name] ?? true // Default to true if not set, matching previous behavior or safe default
 	},
 	getAllModules: async () => {
-		const query = db.prepare('SELECT * FROM Modules').all()
-		return query
+		const modules = (await Flashcore.get('modules')) as Record<string, boolean>
+		// Convert to array format to match previous return type if needed, or just return the object
+		// Previous implementation returned an array of objects from SQL.
+		// Let's return an array to maintain compatibility.
+		if (!modules) return []
+		return Object.entries(modules).map(([name, isEnabled]) => ({ moduleName: name, isEnabled: isEnabled ? 1 : 0 }))
 	},
-	setAuditLogChannel: async function (channelData) {
-		try {
-			db.exec('DELETE FROM AuditLogsChannel')
-			const query = db.prepare('INSERT OR REPLACE INTO AuditLogsChannel (channelName, channelId) VALUES (?, ?)')
-			query.run(channelData.channelName, channelData.channelId)
-			return {
-				code: 200
-			}
-		} catch (error) {
-			console.error('Error executing query:', error)
-			return {
-				code: 500
-			}
-		}
-	},
-	getAuditLogChannel: async function () {
-		try {
-			const query = db.prepare('SELECT * FROM AuditLogsChannel LIMIT 1').get()
-			return {
-				code: 200,
-				data: query
-			}
-		} catch (error) {
-			return {
-				code: 500
-			}
-		}
-	},
-	setMediaChannel: async function (channelData) {
-		try {
-			db.exec('DELETE FROM MediaChannel')
-			const query = db.prepare('INSERT OR REPLACE INTO MediaChannel (channelName, channelId) VALUES (?, ?)')
-			query.run(channelData.channelName, channelData.channelId)
-			return {
-				code: 200,
-				data: channelData
-			}
-		} catch (error) {
-			console.error('Error executing query:', error)
-			return {
-				code: 500
-			}
-		}
-	},
-	getMediaChannel: async function () {
-		try {
-			const query = db.prepare('SELECT * FROM MediaChannel LIMIT 1').get()
-			return {
-				code: 200,
-				data: query
-			}
-		} catch (error) {
-			return {
-				code: 500
-			}
-		}
-	},
-	collectMessage: async function (message: CollectedMessage) {
-		try {
-			const query = db.prepare(
-				'INSERT INTO CollectedMessages (discordUserId, discordUsername, discordMessageId, content, category, embeds) VALUES (?, ?, ?, ?, ?, ?)'
-			)
-			query.run(
-				message.discordUserId,
-				message.discordUsername,
-				message.discordMessageId,
-				message.content,
-				message.category,
-				message.embeds
-			)
-			return {
-				code: 200,
-				data: query
-			}
-		} catch (error) {
-			console.log(error)
-			return {
-				code: 500
-			}
-		}
-	},
-	getCollectedMessage: async function (category?: CollectedMessageCategory) {
-		try {
-			let queryString = 'SELECT * FROM CollectedMessages'
-			if (category) {
-				queryString += `WHERE category = ${category}`
-			}
-			const query = db.prepare(queryString).get()
-			return {
-				code: 200,
-				data: query
-			}
-		} catch (error) {
-			console.log(error)
-			return {
-				code: 500
-			}
-		}
-	},
+	// AuditLog and MediaChannel methods removed as they are handled in commands directly
+
 	createQuotesInstance: async (data: QuoteInstance) => {
 		try {
-			const query = db.prepare(
-				'INSERT INTO QuotesSettings (channelId, category, isRunning, cronId, cronHour) VALUES (?, ?, ?, ?, ?)'
-			)
-			query.run(data.channelId, data.category, data.isRunning, data.cronId, data.cronHour)
-			const instance = db.prepare('SELECT * FROM QuotesSettings WHERE category = ?').get(data.category)
+			const quotesSettings = ((await Flashcore.get('quotesSettings')) as Record<string, QuoteInstance>) || {}
+			quotesSettings[data.category] = data
+			await Flashcore.set('quotesSettings', quotesSettings)
+			return {
+				code: 200,
+				data: data
+			}
+		} catch (error) {
+			console.log(error)
+			return {
+				code: 500
+			}
+		}
+	},
+	getQuotesInstance: async (category: string) => {
+		try {
+			const quotesSettings = ((await Flashcore.get('quotesSettings')) as Record<string, QuoteInstance>) || {}
+			const instance = quotesSettings[category]
 			return {
 				code: 200,
 				data: instance
@@ -141,26 +47,12 @@ const dbService = {
 			}
 		}
 	},
-	getQuotesInstance: async (category: string) => {
-		try {
-			const query = db.prepare('SELECT * FROM QuotesSettings WHERE category = ?').get(category)
-			return {
-				code: 200,
-				data: query
-			}
-		} catch (error) {
-			console.log(error)
-			return {
-				code: 500
-			}
-		}
-	},
 	getAllQuotesInstances: async () => {
 		try {
-			const query = db.prepare('SELECT * FROM QuotesSettings').all()
+			const quotesSettings = ((await Flashcore.get('quotesSettings')) as Record<string, QuoteInstance>) || {}
 			return {
 				code: 200,
-				data: query
+				data: Object.values(quotesSettings)
 			}
 		} catch (error) {
 			console.log(error)
@@ -171,11 +63,14 @@ const dbService = {
 	},
 	updateQuotesInstance: async (isRunning: boolean, category: string) => {
 		try {
-			const query = db.prepare('UPDATE QuotesSettings SET isRunning = ? WHERE category = ?')
-			query.run(isRunning, category)
+			const quotesSettings = ((await Flashcore.get('quotesSettings')) as Record<string, QuoteInstance>) || {}
+			if (quotesSettings[category]) {
+				quotesSettings[category].isRunning = isRunning
+				await Flashcore.set('quotesSettings', quotesSettings)
+			}
 			return {
 				code: 200,
-				data: query
+				data: quotesSettings[category]
 			}
 		} catch (error) {
 			console.log(error)
@@ -186,11 +81,12 @@ const dbService = {
 	},
 	deleteQuotesInstance: async (category: string) => {
 		try {
-			const query = db.prepare('DELETE FROM QuotesSettings WHERE category = ?')
-			query.run(category)
+			const quotesSettings = ((await Flashcore.get('quotesSettings')) as Record<string, QuoteInstance>) || {}
+			delete quotesSettings[category]
+			await Flashcore.set('quotesSettings', quotesSettings)
 			return {
 				code: 200,
-				data: query
+				data: true
 			}
 		} catch (error) {
 			console.log(error)

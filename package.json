@@ -17,13 +17,12 @@
 	},
 	"dependencies": {
 		"@discordjs/voice": "^0.19.0",
-		"better-sqlite3": "^9.2.2",
 		"cheerio": "^1.1.2",
 		"croner": "^8.0.0",
 		"discord.js": "^14.25.1",
 		"duckduckgo-search": "^1.0.7",
 		"libsodium-wrappers": "^0.7.15",
-		"robo.js": "^0.10.31",
+		"robo.js": "https://pkg.pr.new/Wave-Play/robo.js@2b00d32",
 		"toad-scheduler": "^3.1.0"
 	},
 	"devDependencies": {
