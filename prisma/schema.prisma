@@ -12,11 +12,13 @@ model User {
     email         String?    @unique
     emailVerified DateTime?
     image         String?
+    name          String?
     createdAt     DateTime   @default(now())
     updatedAt     DateTime   @updatedAt
     accounts      Account[]
     sessions      Session[]
     passwords     Password[]
+    groupMembers  GroupMember[]
 }
 
 model Account {
@@ -67,4 +69,25 @@ model Password {
     user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
     @@index([email])
+}
+
+model StudyGroup {
+    id         String        @id @default(cuid())
+    w3sGroupId String        @unique
+    name       String
+    channelId  String?
+    createdAt  DateTime      @default(now())
+    members    GroupMember[]
+}
+
+model GroupMember {
+    id        String     @id @default(cuid())
+    w3sUserId String
+    userId    String
+    groupId   String
+    joinedAt  DateTime   @default(now())
+    user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+    group     StudyGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
+
+    @@unique([groupId, userId])
 }

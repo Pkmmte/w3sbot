@@ -4,7 +4,8 @@
 	"main": "index.js",
 	"license": "MIT",
 	"scripts": {
-		"build": "robo build",
+		"build": "npm run build:prisma && robo build",
+		"build:prisma": "node scripts/build-prisma.js",
 		"deploy": "robo deploy",
 		"dev": "robo dev",
 		"doctor": "robo doctor",
@@ -12,6 +13,11 @@
 		"lint": "npm lint:eslint && npm lint:style",
 		"lint:eslint": "eslint . --ext js,jsx,ts,tsx",
 		"lint:style": "prettier --write .",
+		"prisma:generate": "prisma generate",
+		"prisma:dev": "DATABASE_URL=\"file:./dev.db\" prisma migrate dev",
+		"prisma:deploy": "prisma migrate deploy",
+		"prisma:studio": "DATABASE_URL=\"file:./dev.db\" prisma studio",
+		"prisma:studio-prod": "DATABASE_URL=\"file:./production.db\" prisma studio",
 		"start": "robo start --mode production",
 		"mbuild": "node migration.js && robo build"
 	},
