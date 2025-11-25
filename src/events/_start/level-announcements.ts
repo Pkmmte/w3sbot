@@ -1,6 +1,6 @@
 import { events, math } from '@robojs/xp'
 import { EmbedBuilder } from 'discord.js'
-import { client } from 'robo.js'
+import { client, logger } from 'robo.js'
 
 /**
  * Level-Up Announcements
@@ -41,15 +41,28 @@ export default async () => {
 
 			// ===== Channel Selection =====
 			// Channel Selection Options:
-			// 1. By name: guild.channels.cache.find(c => c.name === 'level-ups')
-			// 2. By ID: guild.channels.cache.get('123456789')
-			// 3. From config: await getAnnouncementChannel(guildId)
-			// 4. Multiple channels: Send to array of channels based on level
-			let channel = guild.channels.cache.find((c) => c.name === 'level-ups')
+			// 1. By env var: process.env.LEVEL_ANNOUNCEMENTS_CHANNEL_ID
+			// 2. By name: guild.channels.cache.find(c => c.name === 'level-ups')
+			let channel
 
-			// Fallback to system channel if 'level-ups' doesn't exist
-			if (!channel) {
-				channel = guild.systemChannel ?? undefined
+			// 1. Try environment variable first
+			if (process.env.LEVEL_ANNOUNCEMENTS_CHANNEL_ID) {
+				channel = guild.channels.cache.get(process.env.LEVEL_ANNOUNCEMENTS_CHANNEL_ID)
+				
+				// If env var is set but channel not found, do not fallback.
+				// This respects the "only fires in a channel of my choice" requirement.
+				if (!channel) {
+					logger.warn(`Level up announcement channel configured (${process.env.LEVEL_ANNOUNCEMENTS_CHANNEL_ID}) but not found in guild ${guildId}`)
+					return
+				}
+			} else {
+				// 2. Fallback to 'level-ups' channel if env var not set
+				channel = guild.channels.cache.find((c) => c.name === 'level-ups')
+
+				// Log if not found (no system channel fallback)
+				if (!channel) {
+					logger.warn(`Level up announcement skipped: No 'level-ups' channel found in guild ${guildId} and LEVEL_ANNOUNCEMENTS_CHANNEL_ID is not set.`)
+				}
 			}
 
 			// Exit gracefully if no suitable channel found
@@ -98,7 +111,7 @@ export default async () => {
 			await channel.send({ embeds: [embed] })
 		} catch (error) {
 			// Log errors but don't disrupt the XP system
-			console.error('Error sending level-up announcement:', {
+			logger.error('Error sending level-up announcement:', {
 				guildId: event.guildId,
 				userId: event.userId,
 				newLevel: event.newLevel,

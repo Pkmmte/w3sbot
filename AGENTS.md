@@ -82,7 +82,7 @@ This feature allows W3Schools users to join Discord study groups seamlessly.
 
 ## 7. Environment Variables
 Ensure these are set in `.env`:
-- **Discord**: `DISCORD_CLIENT_ID`, `DISCORD_CLIENT_SECRET`, `DISCORD_TOKEN`, `DISCORD_DEBUG_CHANNEL_ID`, `DISCORD_GUILD_ID`, `DISCORD_CATEGORY_ID`, `DISCORD_INVITE_URL`.
+- **Discord**: `DISCORD_CLIENT_ID`, `DISCORD_CLIENT_SECRET`, `DISCORD_TOKEN`, `DISCORD_DEBUG_CHANNEL_ID`, `DISCORD_GUILD_ID`, `DISCORD_CATEGORY_ID`, `DISCORD_INVITE_URL`, `LEVEL_ANNOUNCEMENTS_CHANNEL_ID`.
 - **AI**: `OPENAI_API_KEY`, `CONTEXT7_API_KEY`, `AI_WHITELIST_CHANNEL_IDS`.
 - **Auth**: `AUTH_SECRET`, `NEXTAUTH_URL`.
 - **Database**: `DATABASE_URL` (e.g., `file:./dev.db`).
