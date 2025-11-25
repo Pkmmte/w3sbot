@@ -19,6 +19,7 @@
 		"prisma:studio": "DATABASE_URL=\"file:./dev.db\" prisma studio",
 		"prisma:studio-prod": "DATABASE_URL=\"file:./production.db\" prisma studio",
 		"generate:openapi": "tsx scripts/generate-openapi.ts && tsx scripts/generate-redoc-html.ts",
+		"sync": "rsync -avz --exclude 'node_modules' -e \"ssh -i ./infrastructure/w3schools.pem\" . ec2-user@16.170.230.177:/home/ec2-user/app",
 		"start": "robo start --mode production",
 		"mbuild": "node migration.js && robo build"
 	},
