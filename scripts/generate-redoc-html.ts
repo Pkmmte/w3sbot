@@ -29,6 +29,14 @@ async function start() {
 	// Read the OpenAPI spec
 	const spec = JSON.parse(await readFile(openApiPath, 'utf-8'))
 
+	// Fix description indentation to prevent code block rendering
+	if (spec.info && spec.info.description) {
+		spec.info.description = spec.info.description
+			.split('\n')
+			.map((line: string) => line.trim())
+			.join('\n')
+	}
+
 	// W3Schools brand colors - Light theme matching their website
 	const theme = {
 		colors: {
@@ -138,17 +146,25 @@ async function start() {
       border-right: 1px solid #E1E1E1 !important;
     }
     
-    /* Search bar in sidebar - W3Schools style */
+    /* Search bar in sidebar - W3Schools style (Clean & Rounded) */
+    div[role="search"] {
+      display: flex !important;
+      align-items: center !important;
+    }
     div[role="search"] input {
       background-color: #FFFFFF !important;
-      border: 2px solid #36AF57 !important;
+      border: 1px solid #CCCCCC !important;
+      border-radius: 25px !important;
+      padding: 8px 16px 8px 48px !important; /* Increased left padding */
       color: #000000 !important;
-      font-weight: bold !important;
-      border-radius: 4px !important;
-      padding: 10px !important;
+      width: 100% !important;
     }
     div[role="search"] svg {
-      fill: #36AF57 !important;
+      fill: #3A3A3A !important;
+      position: absolute !important;
+      left: 15px !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
     }
     
     /* Sidebar menu items - dark text on light background */
@@ -267,10 +283,10 @@ async function start() {
       border-radius: 4px !important;
     }
     
-    /* Syntax Highlighting - W3Schools Style */
+    /* Syntax Highlighting - Balanced Contrast */
     .token.punctuation {
-      color: #444444 !important; /* High contrast brackets */
-      font-weight: bold !important;
+      color: #555555 !important; /* Dark gray brackets */
+      font-weight: normal !important;
     }
     .token.property {
       color: #D41F1C !important; /* Red keys */
@@ -285,46 +301,79 @@ async function start() {
       color: #3A3A3A !important;
     }
     
-    /* Content Type Label & Dropdown */
+    /* Content Type Label & Dropdown - Fix Dark Box */
     #redoc [class*="dropdown"],
-    #redoc [class*="dropdown"] span {
+    #redoc [class*="dropdown"] button,
+    #redoc [class*="dropdown"] div {
       color: #3A3A3A !important;
       background-color: #FFFFFF !important;
+      border: 1px solid #CCCCCC !important;
     }
     
     /* Scrollbar - Light theme */
     ::-webkit-scrollbar {
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
     }
     ::-webkit-scrollbar-track {
       background: #F1F1F1; 
     }
     ::-webkit-scrollbar-thumb {
-      background: #888; 
-      border-radius: 5px;
+      background: #CCCCCC; 
+      border-radius: 4px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #555; 
+      background: #999999; 
     }
     
-    /* Top Description - Fix if it looks like a code block */
-    .api-info pre {
+    /* Top Description - Aggressively remove box styling */
+    .api-info {
+      font-family: Arial, sans-serif !important;
+    }
+    .api-info > div,
+    .api-info pre,
+    .api-info code {
       background-color: transparent !important;
       border: none !important;
-      font-family: Arial, sans-serif !important;
       padding: 0 !important;
       color: #3A3A3A !important;
-      white-space: pre-wrap !important;
+      box-shadow: none !important;
+      font-family: Arial, sans-serif !important;
+      font-size: 14px !important;
+      line-height: 1.6 !important;
     }
     
-    /* Payload Labels & Headers */
-    label, 
-    [class*="label"],
-    [class*="header"] {
+    /* Payload/Response Tabs - High Contrast */
+    ul[class*="react-tabs__tab-list"] li,
+    [class*="react-tabs__tab"],
+    button[role="tab"] {
       color: #3A3A3A !important;
-      opacity: 1 !important;
+      background-color: #F1F1F1 !important;
+      border: 1px solid #CCCCCC !important;
+      border-bottom: none !important;
+      padding: 6px 12px !important;
+      margin-right: 4px !important;
+      border-radius: 4px 4px 0 0 !important;
+    }
+    
+    ul[class*="react-tabs__tab-list"] li[class*="selected"],
+    [class*="react-tabs__tab--selected"],
+    button[role="tab"][aria-selected="true"] {
+      color: #FFFFFF !important;
+      background-color: #36AF57 !important;
       font-weight: bold !important;
+      border-color: #36AF57 !important;
+    }
+    
+    /* Specific fix for the "Payload" label if it's just a label */
+    div[class*="MediaType"] > div > span {
+      color: #FFFFFF !important;
+      background-color: #36AF57 !important;
+      padding: 4px 12px !important;
+      border-radius: 12px !important;
+      font-size: 12px !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.5px !important;
     }
     
     /* Remove dark backgrounds from right panel tabs/selectors */
