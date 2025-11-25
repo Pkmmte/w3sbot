@@ -16,23 +16,32 @@
 		"mbuild": "node migration.js && robo build"
 	},
 	"dependencies": {
+		"@auth/prisma-adapter": "^2.11.1",
 		"@discordjs/voice": "^0.19.0",
+		"@prisma/adapter-better-sqlite3": "^7.0.0",
+		"@prisma/client": "^7.0.0",
 		"@robojs/ai": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/ai@e9d283026033ead0edd085c03dfb1fc4069b2bf5",
 		"@robojs/auth": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/auth@2b00d32",
 		"@robojs/server": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@2b00d32",
 		"@robojs/xp": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/xp@2b00d32",
+		"better-sqlite3": "^12.4.6",
 		"cheerio": "^1.1.2",
 		"croner": "^8.0.0",
 		"discord.js": "^14.25.1",
 		"duckduckgo-search": "^1.0.7",
 		"libsodium-wrappers": "^0.7.15",
-		"robo.js": "https://pkg.pr.new/Wave-Play/robo.js@2b00d32",
+		"next": "15.5.4",
+		"openai": "^6.9.1",
+		"robo.js": "https://pkg.pr.new/Wave-Play/robo.js@e9d2830",
 		"toad-scheduler": "^3.1.0"
 	},
 	"devDependencies": {
 		"@swc/core": "^1.15.3",
+		"@types/better-sqlite3": "^7.6.13",
 		"@types/node": "^24.10.1",
+		"@types/react": "19.2.7",
 		"prettier": "^3.6.2",
+		"prisma": "^7.0.0",
 		"typescript": "^5.9.3"
 	},
 	"type": "module"
