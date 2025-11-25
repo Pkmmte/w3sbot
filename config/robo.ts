@@ -1,6 +1,6 @@
 // import { env } from "@/core/env.js";
 import type { Config } from 'robo.js'
-import type { LogLevel } from "robo.js/logger.js";
+import type { LogLevel } from 'robo.js/logger.js'
 
 export default {
 	clientOptions: {

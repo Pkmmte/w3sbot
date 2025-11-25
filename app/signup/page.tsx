@@ -27,7 +27,7 @@ export default function SignupPage() {
 		const lastName = formData.get('lastName') as string
 		const password = formData.get('password') as string
 		const confirmPassword = formData.get('confirmPassword') as string
-		
+
 		if (password !== confirmPassword) {
 			setError('Passwords do not match')
 			setLoading(false)
@@ -61,7 +61,7 @@ export default function SignupPage() {
 			if (result && 'error' in result && typeof result.error === 'string') {
 				throw new Error(result.error)
 			}
-			
+
 			window.location.href = '/dashboard'
 		} catch (err) {
 			setError((err as Error).message)
@@ -76,84 +76,64 @@ export default function SignupPage() {
 					Back to Home
 				</Link>
 				<h1 className={styles.title}>Create an account</h1>
-				
-				{error && (
-					<div className={styles.error}>
-						{error}
-					</div>
-				)}
+
+				{error && <div className={styles.error}>{error}</div>}
 
 				<form onSubmit={handleSubmit} className={styles.form}>
 					<input type="hidden" name="csrfToken" value={csrfToken} />
-					
+
 					<div className={styles.inputGroup}>
-						<label htmlFor="email" className={styles.label}>Email</label>
-						<input 
-							id="email"
-							name="email" 
-							type="email" 
-							required 
-							className={styles.input}
-						/>
+						<label htmlFor="email" className={styles.label}>
+							Email
+						</label>
+						<input id="email" name="email" type="email" required className={styles.input} />
 					</div>
 
 					<div className={styles.inputGroup}>
-						<label htmlFor="firstName" className={styles.label}>First Name</label>
-						<input 
-							id="firstName"
-							name="firstName" 
-							type="text" 
-							required 
-							className={styles.input}
-						/>
+						<label htmlFor="firstName" className={styles.label}>
+							First Name
+						</label>
+						<input id="firstName" name="firstName" type="text" required className={styles.input} />
 					</div>
 
 					<div className={styles.inputGroup}>
-						<label htmlFor="lastName" className={styles.label}>Last Name</label>
-						<input 
-							id="lastName"
-							name="lastName" 
-							type="text" 
-							required 
-							className={styles.input}
-						/>
+						<label htmlFor="lastName" className={styles.label}>
+							Last Name
+						</label>
+						<input id="lastName" name="lastName" type="text" required className={styles.input} />
 					</div>
 
 					<div className={styles.inputGroup}>
-						<label htmlFor="password" className={styles.label}>Password</label>
-						<input 
-							id="password"
-							name="password" 
-							type="password" 
-							required 
-							minLength={8}
-							className={styles.input}
-						/>
+						<label htmlFor="password" className={styles.label}>
+							Password
+						</label>
+						<input id="password" name="password" type="password" required minLength={8} className={styles.input} />
 					</div>
 
 					<div className={styles.inputGroup}>
-						<label htmlFor="confirmPassword" className={styles.label}>Confirm Password</label>
-						<input 
+						<label htmlFor="confirmPassword" className={styles.label}>
+							Confirm Password
+						</label>
+						<input
 							id="confirmPassword"
-							name="confirmPassword" 
-							type="password" 
-							required 
+							name="confirmPassword"
+							type="password"
+							required
 							minLength={8}
 							className={styles.input}
 						/>
 					</div>
 
-					<button 
-						type="submit" 
-						className={styles.button}
-						disabled={loading}
-					>
+					<button type="submit" className={styles.button} disabled={loading}>
 						{loading ? 'Creating account...' : 'Sign up'}
 					</button>
 				</form>
 
 				<div className={styles.loginContainer}>
-					Already have an account? <Link href="/login" className={styles.link}>Sign in</Link>
+					Already have an account?{' '}
+					<Link href="/login" className={styles.link}>
+						Sign in
+					</Link>
 				</div>
 			</div>
 		</div>

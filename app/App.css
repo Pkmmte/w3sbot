@@ -1,5 +1,11 @@
 :root {
-	font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	font-family:
+		'Inter',
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		'Segoe UI',
+		sans-serif;
 	font-weight: 400;
 	color: #e8edf9;
 	background-color: #060914;
@@ -16,17 +22,19 @@
 body {
 	margin: 0;
 	min-height: 100vh;
-	background: radial-gradient(circle at 20% 18%, rgba(59, 130, 246, 0.25), transparent 50%),
+	background:
+		radial-gradient(circle at 20% 18%, rgba(59, 130, 246, 0.25), transparent 50%),
 		radial-gradient(circle at 80% 12%, rgba(14, 165, 233, 0.22), transparent 55%),
-		radial-gradient(circle at 40% 80%, rgba(37, 99, 235, 0.18), transparent 60%),
-		#030510;
+		radial-gradient(circle at 40% 80%, rgba(37, 99, 235, 0.18), transparent 60%), #030510;
 	color: inherit;
 }
 
 a {
 	color: #60a5fa;
 	text-decoration: none;
-	transition: color 0.2s ease, border-color 0.2s ease;
+	transition:
+		color 0.2s ease,
+		border-color 0.2s ease;
 }
 
 a:hover,
@@ -271,11 +279,13 @@ a:focus-visible {
 
 .card--hover-accent {
 	border-color: rgba(148, 163, 184, 0.3);
-	transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+	transition:
+		border-color 0.2s ease,
+		box-shadow 0.2s ease,
+		transform 0.2s ease;
 	position: relative;
 	overflow: hidden;
 }
-
 
 .card--hover-accent::before {
 	content: '';
@@ -296,7 +306,7 @@ a:focus-visible {
 	opacity: 0.45;
 }
 
-.card--hover-accent>* {
+.card--hover-accent > * {
 	position: relative;
 	z-index: 1;
 }
@@ -458,7 +468,6 @@ a:focus-visible {
 }
 
 @keyframes pulse {
-
 	0%,
 	100% {
 		opacity: 0.25;

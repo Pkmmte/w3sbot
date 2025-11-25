@@ -80,7 +80,7 @@ export default function DashboardPage() {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				credentials: 'include',
-				body: JSON.stringify({ email }),
+				body: JSON.stringify({ email })
 			})
 			if (!response.ok) {
 				throw new Error(`Unexpected verify-email result: ${response.status}`)
@@ -177,7 +177,7 @@ function SessionDetails(props: SessionDetailsProps) {
 		onResend,
 		onSignOut,
 		resendStatus,
-		signOutPending,
+		signOutPending
 	} = props
 
 	const resendLabel = useMemo(() => {
@@ -193,9 +193,9 @@ function SessionDetails(props: SessionDetailsProps) {
 		}
 	}, [resendStatus])
 
-		return (
-			<section className="session-grid">
-				<article className="card card--hover-accent">
+	return (
+		<section className="session-grid">
+			<article className="card card--hover-accent">
 				<h2 className="card-title">Session overview</h2>
 				<ul className="info-list">
 					<li>
@@ -216,13 +216,21 @@ function SessionDetails(props: SessionDetailsProps) {
 					</li>
 				</ul>
 				<div className="button-row" style={{ marginTop: '16px' }}>
-					<button className="button button--ghost" type="button" onClick={() => { void onRefresh() }}>
+					<button
+						className="button button--ghost"
+						type="button"
+						onClick={() => {
+							void onRefresh()
+						}}
+					>
 						Refresh session
 					</button>
 					<button
 						type="button"
 						className="button button--subtle"
-						onClick={() => { void onSignOut() }}
+						onClick={() => {
+							void onSignOut()
+						}}
 						disabled={signOutPending}
 					>
 						{signOutPending ? 'Signing out…' : 'Sign out'}
@@ -242,7 +250,9 @@ function SessionDetails(props: SessionDetailsProps) {
 							<button
 								type="button"
 								className="button button--primary"
-								onClick={() => { void onResend() }}
+								onClick={() => {
+									void onResend()
+								}}
 								disabled={resendStatus === 'loading'}
 							>
 								{resendLabel}
@@ -260,29 +270,31 @@ function SessionDetails(props: SessionDetailsProps) {
 						<p className="card-copy">Your email is verified. Welcome aboard!</p>
 						<span className="status-pill status-pill--success">Verified</span>
 						<p className="card-copy text-muted" style={{ marginTop: '16px' }}>
-							Verified on {emailVerifiedAt ?? '—'}. You can reuse this card to surface premium perks or onboarding tasks.
+							Verified on {emailVerifiedAt ?? '—'}. You can reuse this card to surface premium perks or onboarding
+							tasks.
 						</p>
 					</>
 				)}
 			</article>
 
-				<article className="card card--hover-accent">
+			<article className="card card--hover-accent">
 				<h2 className="card-title">Developer quick links</h2>
 				<ul className="card-list">
 					<li>
-						Add your own data by editing{' '}
-						<code>app/dashboard/page.tsx</code>.
+						Add your own data by editing <code>app/dashboard/page.tsx</code>.
 					</li>
 					<li>
 						Need the raw API? Hit <code>GET /api/auth/session</code> in your tools or server handlers.
 					</li>
 					<li>
-						Keep your users safe with <code>@robojs/auth</code> helpers like <code>signIn</code>, <code>signOut</code>, and
+						Keep your users safe with <code>@robojs/auth</code> helpers like <code>signIn</code>, <code>signOut</code>,
+						and
 						<code>getProviders</code>.
 					</li>
 				</ul>
 				<p className="card-copy text-muted" style={{ marginTop: '16px' }}>
-					Need to peek behind the scenes? Attach an inspector of your choice or log <code>getServerSession()</code> responses inside your APIs while you iterate.
+					Need to peek behind the scenes? Attach an inspector of your choice or log <code>getServerSession()</code>{' '}
+					responses inside your APIs while you iterate.
 				</p>
 			</article>
 		</section>
@@ -295,6 +307,6 @@ function formatDate(value: string | null | undefined): string | null {
 	if (Number.isNaN(date.getTime())) return value
 	return new Intl.DateTimeFormat(undefined, {
 		dateStyle: 'medium',
-		timeStyle: 'short',
+		timeStyle: 'short'
 	}).format(date)
 }
