@@ -1,3 +1,7 @@
+// import { env } from "@/core/env.js";
+import type { Config } from 'robo.js'
+import type { LogLevel } from "robo.js/logger.js";
+
 export default {
 	clientOptions: {
 		intents: [
@@ -9,11 +13,10 @@ export default {
 			'GuildVoiceStates'
 		]
 	},
-	plugins: [],
+	logger: {
+		level: process.env.LOGGER_LEVEL as LogLevel // env.get('logger.level') as LogLevel
+	},
 	sage: {
-		// errorChannelId: '1123381317338415124', // dev
-		// DISCORD_DEBUG_CHANNEL_ID: '1123381317338415124' // dev
-		errorChannelId: '1121852107943841802', // Production
-		DISCORD_DEBUG_CHANNEL_ID: '1121852107943841802' // Production
+		errorChannelId: process.env.DISCORD_DEBUG_CHANNEL_ID // env.get('discord.errorChannelId')
 	}
-}
+} satisfies Config

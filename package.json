@@ -17,6 +17,10 @@
 	},
 	"dependencies": {
 		"@discordjs/voice": "^0.19.0",
+		"@robojs/ai": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/ai@e9d283026033ead0edd085c03dfb1fc4069b2bf5",
+		"@robojs/auth": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/auth@2b00d32",
+		"@robojs/server": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@2b00d32",
+		"@robojs/xp": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/xp@2b00d32",
 		"cheerio": "^1.1.2",
 		"croner": "^8.0.0",
 		"discord.js": "^14.25.1",

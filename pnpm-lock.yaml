@@ -11,6 +11,18 @@ importers:
       '@discordjs/voice':
         specifier: ^0.19.0
         version: 0.19.0
+      '@robojs/ai':
+        specifier: https://pkg.pr.new/Wave-Play/robo.js/@robojs/ai@e9d283026033ead0edd085c03dfb1fc4069b2bf5
+        version: https://pkg.pr.new/Wave-Play/robo.js/@robojs/ai@e9d283026033ead0edd085c03dfb1fc4069b2bf5(@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@2b00d32)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@2b00d32(@swc/core@1.15.3)(discord.js@14.25.1)(typescript@5.9.3))(ws@8.18.3)(zod@3.25.76)
+      '@robojs/auth':
+        specifier: https://pkg.pr.new/Wave-Play/robo.js/@robojs/auth@2b00d32
+        version: https://pkg.pr.new/Wave-Play/robo.js/@robojs/auth@2b00d32(@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@2b00d32)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@2b00d32(@swc/core@1.15.3)(discord.js@14.25.1)(typescript@5.9.3))
+      '@robojs/server':
+        specifier: https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@2b00d32
+        version: https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@2b00d32
+      '@robojs/xp':
+        specifier: https://pkg.pr.new/Wave-Play/robo.js/@robojs/xp@2b00d32
+        version: https://pkg.pr.new/Wave-Play/robo.js/@robojs/xp@2b00d32(@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@2b00d32)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@2b00d32(@swc/core@1.15.3)(discord.js@14.25.1)(typescript@5.9.3))
       cheerio:
         specifier: ^1.1.2
         version: 1.1.2
@@ -48,6 +60,20 @@ importers:
 
 packages:
 
+  '@auth/core@0.40.0':
+    resolution: {integrity: sha512-n53uJE0RH5SqZ7N1xZoMKekbHfQgjd0sAEyUbE+IYJnmuQkbvuZnXItCU7d+i7Fj8VGOgqvNO7Mw4YfBTlZeQw==}
+    peerDependencies:
+      '@simplewebauthn/browser': ^9.0.1
+      '@simplewebauthn/server': ^9.0.2
+      nodemailer: ^6.8.0
+    peerDependenciesMeta:
+      '@simplewebauthn/browser':
+        optional: true
+      '@simplewebauthn/server':
+        optional: true
+      nodemailer:
+        optional: true
+
   '@discordjs/builders@1.13.0':
     resolution: {integrity: sha512-COK0uU6ZaJI+LA67H/rp8IbEkYwlZf3mAoBI5wtPh5G5cbEQGNhVpzINg2f/6+q/YipnNIKy6fJDg6kMUKUw4Q==}
     engines: {node: '>=16.11.0'}
@@ -83,6 +109,58 @@ packages:
   '@discordjs/ws@1.2.3':
     resolution: {integrity: sha512-wPlQDxEmlDg5IxhJPuxXr3Vy9AjYq5xCvFWGJyD7w7Np8ZGu+Mc+97LCoEc/+AYCo2IDpKioiH0/c/mj5ZR9Uw==}
     engines: {node: '>=16.11.0'}
+
+  '@panva/hkdf@1.2.1':
+    resolution: {integrity: sha512-6oclG6Y3PiDFcoyk8srjLfVKyMfVCKJ27JwNPViuXziFpmdz+MZnZN/aKY0JGXgYuO/VghU0jcOAZgWXZ1Dmrw==}
+
+  '@robojs/ai@https://pkg.pr.new/Wave-Play/robo.js/@robojs/ai@e9d283026033ead0edd085c03dfb1fc4069b2bf5':
+    resolution: {tarball: https://pkg.pr.new/Wave-Play/robo.js/@robojs/ai@e9d283026033ead0edd085c03dfb1fc4069b2bf5}
+    version: 0.5.8
+    peerDependencies:
+      '@robojs/server': ^0.6.2
+      robo.js: ^0.10.28
+    peerDependenciesMeta:
+      '@robojs/server':
+        optional: true
+
+  '@robojs/auth@https://pkg.pr.new/Wave-Play/robo.js/@robojs/auth@2b00d32':
+    resolution: {tarball: https://pkg.pr.new/Wave-Play/robo.js/@robojs/auth@2b00d32}
+    version: 0.0.0
+    peerDependencies:
+      '@auth/prisma-adapter': '*'
+      '@prisma/client': '*'
+      '@react-email/components': '*'
+      '@robojs/server': '>=0.6.5'
+      robo.js: ^0.10.1
+    peerDependenciesMeta:
+      '@auth/prisma-adapter':
+        optional: true
+      '@prisma/client':
+        optional: true
+      '@react-email/components':
+        optional: true
+
+  '@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@2b00d32':
+    resolution: {tarball: https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@2b00d32}
+    version: 0.6.5
+    peerDependencies:
+      fastify: ^4.15.0
+      vite: ^5.2.0
+    peerDependenciesMeta:
+      fastify:
+        optional: true
+      vite:
+        optional: true
+
+  '@robojs/xp@https://pkg.pr.new/Wave-Play/robo.js/@robojs/xp@2b00d32':
+    resolution: {tarball: https://pkg.pr.new/Wave-Play/robo.js/@robojs/xp@2b00d32}
+    version: 0.0.0
+    peerDependencies:
+      '@robojs/server': ^0.6.0
+      robo.js: ^0.10.1
+    peerDependenciesMeta:
+      '@robojs/server':
+        optional: true
 
   '@sapphire/async-queue@1.5.3':
     resolution: {integrity: sha512-x7zadcfJGxFka1Q3f8gCts1F0xMwCKbZweM85xECGI0hBTeIZJGGCrHgLggihBoprlQ/hBmDR5LKfIPqnmHM3w==}
@@ -191,6 +269,9 @@ packages:
     resolution: {integrity: sha512-Xfe6rpCTxSxfbswi/W/Pz7zp1WWSNn4A0eW4mLkQUewCrXXtMj31lCg+iQyTkh/CkusZSq9eDflu7tjEDXUY6g==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
 
+  argon2id@1.0.1:
+    resolution: {integrity: sha512-rsiD3lX+0L0CsiZARp3bf9EGxprtuWAT7PpiJd+Fk53URV0/USOQkBIP1dLTV8t6aui0ECbymQ9W9YCcTd6XgA==}
+
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
@@ -287,6 +368,9 @@ packages:
     resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
     engines: {node: '>=0.10.0'}
 
+  jose@6.1.2:
+    resolution: {integrity: sha512-MpcPtHLE5EmztuFIqB0vzHAWJPpmN1E6L4oo+kze56LIs3MyXIj9ZHMDxqOvkP38gBR7K1v3jqd4WU2+nrfONQ==}
+
   libsodium-wrappers@0.7.15:
     resolution: {integrity: sha512-E4anqJQwcfiC6+Yrl01C1m8p99wEhLmJSs0VQqST66SbQXXBoaJY0pF4BNjRYa/sOQAxx6lXAaAFIlx+15tXJQ==}
 
@@ -310,8 +394,32 @@ packages:
     resolution: {integrity: sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==}
     engines: {node: '>= 0.6'}
 
+  nanoid@5.1.6:
+    resolution: {integrity: sha512-c7+7RQ+dMB5dPwwCp4ee1/iV/q2P6aK1mTZcfr1BTuVlyW9hJYiMPybJCcnBlQtuSmTIWNeazm/zqNoZSSElBg==}
+    engines: {node: ^18 || >=20}
+    hasBin: true
+
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
+
+  oauth4webapi@3.8.3:
+    resolution: {integrity: sha512-pQ5BsX3QRTgnt5HxgHwgunIRaDXBdkT23tf8dfzmtTIL2LTpdmxgbpbBm0VgFWAIDlezQvQCTgnVIUmHupXHxw==}
+
+  openai@6.9.1:
+    resolution: {integrity: sha512-vQ5Rlt0ZgB3/BNmTa7bIijYFhz3YBceAA3Z4JuoMSBftBF9YqFHIEhZakSs+O/Ad7EaoEimZvHxD5ylRjN11Lg==}
+    hasBin: true
+    peerDependencies:
+      ws: ^8.18.0
+      zod: ^3.25 || ^4.0
+    peerDependenciesMeta:
+      ws:
+        optional: true
+      zod:
+        optional: true
+
+  p-limit@7.2.0:
+    resolution: {integrity: sha512-ATHLtwoTNDloHRFFxFJdHnG6n2WUeFjaR8XQMFdKIv0xkXjrER8/iG9iu265jOM95zXHAfv9oTkqhrfbIzosrQ==}
+    engines: {node: '>=20'}
 
   parse5-htmlparser2-tree-adapter@7.1.0:
     resolution: {integrity: sha512-ruw5xyKs6lrpo9x9rCZqZZnIUntICjQAd0Wsmp396Ul9lN/h+ifgVV1x1gZHi8euej6wTfpqX8j+BFQxF0NS/g==}
@@ -321,6 +429,14 @@ packages:
 
   parse5@7.3.0:
     resolution: {integrity: sha512-IInvU7fabl34qmi9gY8XOVxhYyMyuH2xUNpb2q8/Y+7552KlejkRvqvD19nMoUW/uQGGbqNpA6Tufu5FL5BZgw==}
+
+  preact-render-to-string@6.5.11:
+    resolution: {integrity: sha512-ubnauqoGczeGISiOh6RjX0/cdaF8v/oDXIjO85XALCQjwQP+SB4RDXXtvZ6yTYSjG+PC1QRP2AhPgCEsM2EvUw==}
+    peerDependencies:
+      preact: '>=10'
+
+  preact@10.24.3:
+    resolution: {integrity: sha512-Z2dPnBnMUfyQfSQ+GBdsGa16hz35YmLmtTLhM169uW944hYL6xzTYkJjC07j+Wosz733pMWx0fgON3JNw1jJQA==}
 
   prettier@3.6.2:
     resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
@@ -434,7 +550,22 @@ packages:
       utf-8-validate:
         optional: true
 
+  yocto-queue@1.2.2:
+    resolution: {integrity: sha512-4LCcse/U2MHZ63HAJVE+v71o7yOdIe4cZ70Wpf8D/IyjDKYQLV5GD46B+hSTjJsvV5PztjvHoU580EftxjDZFQ==}
+    engines: {node: '>=12.20'}
+
+  zod@3.25.76:
+    resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
+
 snapshots:
+
+  '@auth/core@0.40.0':
+    dependencies:
+      '@panva/hkdf': 1.2.1
+      jose: 6.1.2
+      oauth4webapi: 3.8.3
+      preact: 10.24.3
+      preact-render-to-string: 6.5.11(preact@10.24.3)
 
   '@discordjs/builders@1.13.0':
     dependencies:
@@ -501,6 +632,40 @@ snapshots:
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
+
+  '@panva/hkdf@1.2.1': {}
+
+  '@robojs/ai@https://pkg.pr.new/Wave-Play/robo.js/@robojs/ai@e9d283026033ead0edd085c03dfb1fc4069b2bf5(@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@2b00d32)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@2b00d32(@swc/core@1.15.3)(discord.js@14.25.1)(typescript@5.9.3))(ws@8.18.3)(zod@3.25.76)':
+    dependencies:
+      openai: 6.9.1(ws@8.18.3)(zod@3.25.76)
+      robo.js: https://pkg.pr.new/Wave-Play/robo.js@2b00d32(@swc/core@1.15.3)(discord.js@14.25.1)(typescript@5.9.3)
+    optionalDependencies:
+      '@robojs/server': https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@2b00d32
+    transitivePeerDependencies:
+      - ws
+      - zod
+
+  '@robojs/auth@https://pkg.pr.new/Wave-Play/robo.js/@robojs/auth@2b00d32(@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@2b00d32)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@2b00d32(@swc/core@1.15.3)(discord.js@14.25.1)(typescript@5.9.3))':
+    dependencies:
+      '@auth/core': 0.40.0
+      '@robojs/server': https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@2b00d32
+      argon2id: 1.0.1
+      nanoid: 5.1.6
+      robo.js: https://pkg.pr.new/Wave-Play/robo.js@2b00d32(@swc/core@1.15.3)(discord.js@14.25.1)(typescript@5.9.3)
+      zod: 3.25.76
+    transitivePeerDependencies:
+      - '@simplewebauthn/browser'
+      - '@simplewebauthn/server'
+      - nodemailer
+
+  '@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@2b00d32': {}
+
+  '@robojs/xp@https://pkg.pr.new/Wave-Play/robo.js/@robojs/xp@2b00d32(@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@2b00d32)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@2b00d32(@swc/core@1.15.3)(discord.js@14.25.1)(typescript@5.9.3))':
+    dependencies:
+      p-limit: 7.2.0
+      robo.js: https://pkg.pr.new/Wave-Play/robo.js@2b00d32(@swc/core@1.15.3)(discord.js@14.25.1)(typescript@5.9.3)
+    optionalDependencies:
+      '@robojs/server': https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@2b00d32
 
   '@sapphire/async-queue@1.5.3': {}
 
@@ -582,6 +747,8 @@ snapshots:
   '@vladfrangu/async_event_emitter@2.4.5': {}
 
   '@vladfrangu/async_event_emitter@2.4.7': {}
+
+  argon2id@1.0.1: {}
 
   asynckit@0.4.0: {}
 
@@ -713,6 +880,8 @@ snapshots:
     dependencies:
       safer-buffer: 2.1.2
 
+  jose@6.1.2: {}
+
   libsodium-wrappers@0.7.15:
     dependencies:
       libsodium: 0.7.15
@@ -731,9 +900,22 @@ snapshots:
     dependencies:
       mime-db: 1.52.0
 
+  nanoid@5.1.6: {}
+
   nth-check@2.1.1:
     dependencies:
       boolbase: 1.0.0
+
+  oauth4webapi@3.8.3: {}
+
+  openai@6.9.1(ws@8.18.3)(zod@3.25.76):
+    optionalDependencies:
+      ws: 8.18.3
+      zod: 3.25.76
+
+  p-limit@7.2.0:
+    dependencies:
+      yocto-queue: 1.2.2
 
   parse5-htmlparser2-tree-adapter@7.1.0:
     dependencies:
@@ -747,6 +929,12 @@ snapshots:
   parse5@7.3.0:
     dependencies:
       entities: 6.0.1
+
+  preact-render-to-string@6.5.11(preact@10.24.3):
+    dependencies:
+      preact: 10.24.3
+
+  preact@10.24.3: {}
 
   prettier@3.6.2: {}
 
@@ -792,3 +980,7 @@ snapshots:
   ws@8.18.0: {}
 
   ws@8.18.3: {}
+
+  yocto-queue@1.2.2: {}
+
+  zod@3.25.76: {}

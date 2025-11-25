@@ -15,7 +15,7 @@ export default async (message: Message) => {
 	try {
 		const auditLogChannelData = JSON.parse(
 			await Flashcore.get('audit-log-channel', {
-				namespace: message.guildId!
+				namespace: message.guildId! ?? '1188607424832229386'
 			})
 		)
 		if (auditLogChannelData) {

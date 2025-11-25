@@ -1,5 +1,5 @@
 import { Flashcore } from 'robo.js'
-import { QuoteInstance } from '../../types/types'
+import type { QuoteInstance } from '../../types/types.js'
 
 const dbService = {
 	isModuleEnabled: async (name: string) => {
