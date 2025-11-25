@@ -1,5 +1,62 @@
 import { Flashcore } from 'robo.js'
 
+/**
+ * @openapi
+ * /api/auth-start:
+ *   get:
+ *     tags:
+ *       - Authentication
+ *     summary: Start the Discord OAuth authentication flow
+ *     description: |
+ *       Initiates the Discord OAuth authentication process for a user joining a study group.
+ *       This endpoint is called with a handoff ID that was created during the handoff process.
+ *       
+ *       **Flow:**
+ *       1. Validates the handoff ID from the query parameter
+ *       2. Retrieves stored handoff data (w3sUserId, groupId, groupName)
+ *       3. Fetches CSRF token from Auth.js
+ *       4. Initiates Discord OAuth sign-in flow
+ *       5. Redirects user to Discord for authentication
+ *       
+ *       **Note:** This is an internal endpoint used as part of the OAuth flow and should
+ *       not be called directly by external clients.
+ *     parameters:
+ *       - in: query
+ *         name: handoffId
+ *         required: true
+ *         description: The unique handoff identifier from the handoff process
+ *         schema:
+ *           type: string
+ *           format: uuid
+ *           example: "550e8400-e29b-41d4-a716-446655440000"
+ *     responses:
+ *       302:
+ *         description: Redirects to Discord OAuth authentication page
+ *         headers:
+ *           Location:
+ *             description: The Discord OAuth authorization URL
+ *             schema:
+ *               type: string
+ *               example: "https://discord.com/oauth2/authorize?..."
+ *           Set-Cookie:
+ *             description: Authentication cookies for the OAuth flow
+ *             schema:
+ *               type: string
+ *       400:
+ *         description: Bad request - Missing or invalid handoffId
+ *         content:
+ *           text/plain:
+ *             schema:
+ *               type: string
+ *               example: "Missing handoffId"
+ *       500:
+ *         description: Internal server error - Failed to get redirect URL from Auth.js
+ *         content:
+ *           text/plain:
+ *             schema:
+ *               type: string
+ *               example: "Failed to get redirect URL from Auth.js"
+ */
 export default async function (req: Request) {
 	const url = new URL(req.url)
 	const handoffId = url.searchParams.get('handoffId')

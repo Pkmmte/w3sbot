@@ -18,6 +18,7 @@
 		"prisma:deploy": "prisma migrate deploy",
 		"prisma:studio": "DATABASE_URL=\"file:./dev.db\" prisma studio",
 		"prisma:studio-prod": "DATABASE_URL=\"file:./production.db\" prisma studio",
+		"generate:openapi": "tsx scripts/generate-openapi.ts && tsx scripts/generate-redoc-html.ts",
 		"start": "robo start --mode production",
 		"mbuild": "node migration.js && robo build"
 	},
@@ -42,12 +43,16 @@
 		"toad-scheduler": "^3.1.0"
 	},
 	"devDependencies": {
+		"@redocly/cli": "^2.11.1",
 		"@swc/core": "^1.15.3",
 		"@types/better-sqlite3": "^7.6.13",
 		"@types/node": "^24.10.1",
 		"@types/react": "19.2.7",
+		"@types/swagger-jsdoc": "^6.0.4",
 		"prettier": "^3.6.2",
 		"prisma": "^7.0.0",
+		"swagger-jsdoc": "^6.2.8",
+		"tsx": "^4.20.6",
 		"typescript": "^5.9.3"
 	},
 	"type": "module"

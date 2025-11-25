@@ -1,4 +1,4 @@
-import { Flashcore, logger } from 'robo.js'
+import { Flashcore } from 'robo.js'
 import { StudyGroupService } from '../services/study-groups.js'
 import { getServerSession } from '@robojs/auth'
 
@@ -7,34 +7,73 @@ import { getServerSession } from '@robojs/auth'
  * @openapi
  * /api/join-group:
  *   post:
- *     summary: Complete the join process for a study group.
+ *     tags:
+ *       - Study Groups
+ *       - Authentication
+ *     summary: Complete the join process for a study group
+ *     description: |
+ *       Completes the study group join process after a user has authenticated via Discord OAuth.
+ *       This endpoint validates the handoff ID, adds the user to the Discord study group,
+ *       notifies W3Schools of the successful join, and returns the Discord invite URL.
+ *       
+ *       **Flow:**
+ *       1. User is redirected here after completing Discord OAuth authentication
+ *       2. The handoff ID from the authentication flow is validated
+ *       3. User is added to the Discord study group
+ *       4. W3Schools is notified of the successful join
+ *       5. Handoff data is cleaned up and invite URL is returned
+ *       
+ *       **Authentication Required:** User must have a valid Discord OAuth session.
+ *     security:
+ *       - OAuth2: []
  *     requestBody:
  *       required: true
+ *       description: The handoff ID from the authentication flow
  *       content:
  *         application/json:
  *           schema:
  *             type: object
+ *             required:
+ *               - handoffId
  *             properties:
  *               handoffId:
  *                 type: string
+ *                 description: The unique handoff identifier generated during the handoff process
+ *                 format: uuid
+ *                 example: "550e8400-e29b-41d4-a716-446655440000"
  *     responses:
  *       200:
- *         description: Joined successfully.
+ *         description: User successfully joined the study group
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   description: Indicates whether the join operation was successful
+ *                   example: true
  *                 inviteUrl:
  *                   type: string
- *       401:
- *         description: Unauthorized.
+ *                   description: The Discord invite URL for the study group
+ *                   example: "https://discord.gg/abc123xyz"
  *       400:
- *         description: Invalid or expired handoff ID.
+ *         description: Bad request - The handoffId is missing, invalid, or has expired (expires after 10 minutes)
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: string
+ *               example: "Invalid or expired handoff ID"
+ *       401:
+ *         description: Unauthorized - User is not authenticated or session is invalid
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: string
+ *               example: "Unauthorized"
  */
 export default async function (req: Request) {
 	const session = await getServerSession(req)
-	logger.warn('Session: ', session)
 	if (!session || !session.user || !session.user.id) {
 		return new Response('Unauthorized', { status: 401 })
 	}
@@ -66,7 +105,6 @@ export default async function (req: Request) {
 	// If not in session object, we might need to get it from cookies or DB.
 	// For now, let's pass session.sessionToken if it exists, or empty string.
 	const sessionToken = (session as any).sessionToken || ''
-	logger.warn('Session token: ', sessionToken)
 	
 	await StudyGroupService.notifyW3Schools(w3sUserId, session.user.id, sessionToken)
 
