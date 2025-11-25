@@ -1,6 +1,6 @@
 import { logger, Env } from 'robo.js'
 import path from 'node:path'
-import { readFile, writeFile } from 'node:fs/promises'
+import { readFile, writeFile, mkdir } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 
 Env.loadSync()
@@ -24,7 +24,11 @@ async function start() {
 	const serverRoot = path.resolve(currentDirectory, '..')
 	
 	const openApiPath = path.join(serverRoot, 'openapi', 'w3sbot-openapi.json')
-	const outputPath = path.join(serverRoot, 'redoc-static.html')
+	const publicDir = path.join(serverRoot, 'public')
+	const outputPath = path.join(publicDir, 'api-docs.html')
+	
+	// Ensure public directory exists
+	await mkdir(publicDir, { recursive: true })
 
 	// Read the OpenAPI spec
 	const spec = JSON.parse(await readFile(openApiPath, 'utf-8'))

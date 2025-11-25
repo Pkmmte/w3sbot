@@ -19,7 +19,7 @@ export const config: PluginOptions = {
 			model: 'gpt-realtime'
 		}
 	}),
-	whitelist: {
+	restrict: {
 		channelIds: process.env.AI_WHITELIST_CHANNEL_IDS?.split(',') ?? []
 	},
 	mcpServers: [

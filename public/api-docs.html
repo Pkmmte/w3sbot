@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf8" />
+  <title>W3Schools Bot API</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      padding: 0;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #FFFFFF;
+    }
+    
+    /* W3Schools Brand Theme - Comprehensive Overrides */
+    /* Force light theme throughout */
+    #redoc,
+    #redoc * {
+      font-family: Arial, sans-serif !important;
+    }
+    
+    /* Sidebar - Make it white/light gray like W3Schools */
+    /* Sidebar - Make it white/light gray like W3Schools */
+    #redoc > div > div:first-child,
+    #redoc [class*="menu-content"],
+    #redoc [class*="sidebar"] {
+      background-color: #FFFFFF !important;
+      border-right: 1px solid #E1E1E1 !important;
+    }
+    
+    /* Search bar in sidebar - W3Schools style (Clean & Rounded) */
+    div[role="search"] {
+      display: flex !important;
+      align-items: center !important;
+    }
+    div[role="search"] input {
+      background-color: #FFFFFF !important;
+      border: 1px solid #CCCCCC !important;
+      border-radius: 25px !important;
+      padding: 8px 16px 8px 48px !important; /* Increased left padding */
+      color: #000000 !important;
+      width: 100% !important;
+    }
+    div[role="search"] svg {
+      fill: #3A3A3A !important;
+      position: absolute !important;
+      left: 15px !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+    }
+    
+    /* Sidebar menu items - dark text on light background */
+    #redoc [class*="menu"] label,
+    #redoc [class*="menu"] span,
+    #redoc [class*="kFbpCO"] {
+      color: #3A3A3A !important;
+      background-color: transparent !important;
+    }
+    
+    /* Active/hover menu items - W3Schools green */
+    #redoc [class*="menu"] label:hover,
+    #redoc [class*="menu"] label[class*="active"],
+    #redoc [class*="kFbpCO"]:hover {
+      color: #36AF57 !important;
+      background-color: #F1F1F1 !important;
+    }
+    
+    /* Main content area - white background */
+    #redoc > div > div:last-child,
+    #redoc [class*="api-content"],
+    #redoc [class*="cKLOic"] {
+      background-color: #FFFFFF !important;
+    }
+    
+    /* Headings - dark gray, bold */
+    #redoc h1,
+    #redoc h2,
+    #redoc h3,
+    #redoc h4,
+    #redoc h5,
+    #redoc [class*="etEcMu"],
+    #redoc [class*="eSjOhJ"] {
+      color: #3A3A3A !important;
+      font-family: Arial, sans-serif !important;
+      font-weight: bold !important;
+    }
+    
+    /* Body text - dark gray for good contrast */
+    #redoc p,
+    #redoc div,
+    #redoc span:not([class*="operation"]):not([class*="http"]) {
+      color: #3A3A3A !important;
+    }
+    
+    /* Links - W3Schools green */
+    #redoc a {
+      color: #36AF57 !important;
+      text-decoration: none !important;
+    }
+    #redoc a:hover {
+      color: #2d8f47 !important;
+      text-decoration: underline !important;
+    }
+    
+    /* HTTP Method Badges - proper colors with white text for contrast */
+    #redoc [class*="operation-type"],
+    #redoc [class*="http-verb"],
+    #redoc [class*="hFkwOU"] {
+      color: #FFFFFF !important;
+      font-weight: bold !important;
+      text-transform: uppercase !important;
+    }
+    #redoc [class*="operation-type"].get,
+    #redoc [class*="http-verb"].get,
+    #redoc [class*="hFkwOU"].get {
+      background-color: #36AF57 !important;
+    }
+    #redoc [class*="operation-type"].post,
+    #redoc [class*="http-verb"].post,
+    #redoc [class*="hFkwOU"].post {
+      background-color: #186FAF !important;
+    }
+    #redoc [class*="operation-type"].put,
+    #redoc [class*="http-verb"].put,
+    #redoc [class*="hFkwOU"].put {
+      background-color: #95507C !important;
+    }
+    #redoc [class*="operation-type"].patch,
+    #redoc [class*="http-verb"].patch,
+    #redoc [class*="hFkwOU"].patch {
+      background-color: #BF581D !important;
+    }
+    #redoc [class*="operation-type"].delete,
+    #redoc [class*="http-verb"].delete,
+    #redoc [class*="hFkwOU"].delete {
+      background-color: #CC3333 !important;
+    }
+    
+    /* Response status buttons */
+    #redoc button[class*="success"],
+    #redoc button[class*="eA-Dmfi"] {
+      color: #36AF57 !important;
+      background-color: rgba(54, 175, 87, 0.1) !important;
+      border: 1px solid rgba(54, 175, 87, 0.3) !important;
+    }
+    #redoc button[class*="error"],
+    #redoc button[class*="fSHIeE"] {
+      color: #D41F1C !important;
+      background-color: rgba(212, 31, 28, 0.1) !important;
+      border: 1px solid rgba(212, 31, 28, 0.3) !important;
+    }
+    
+    /* Code blocks - light gray background like W3Schools */
+    #redoc code,
+    #redoc pre,
+    #redoc [class*="code"],
+    #redoc [class*="react-tabs__tab-panel"] {
+      background-color: #F1F1F1 !important;
+      color: #3A3A3A !important;
+      font-family: 'Courier New', Courier, monospace !important;
+      border: 1px solid #CCCCCC !important;
+    }
+    #redoc pre {
+      padding: 10px !important;
+      border-radius: 4px !important;
+    }
+    
+    /* Syntax Highlighting - Balanced Contrast */
+    .token.punctuation {
+      color: #555555 !important; /* Dark gray brackets */
+      font-weight: normal !important;
+    }
+    .token.property {
+      color: #D41F1C !important; /* Red keys */
+    }
+    .token.string {
+      color: #36AF57 !important; /* Green strings */
+    }
+    .token.number, .token.boolean {
+      color: #186FAF !important; /* Blue numbers/bools */
+    }
+    .token.operator {
+      color: #3A3A3A !important;
+    }
+    
+    /* Content Type Label & Dropdown - Fix Dark Box */
+    #redoc [class*="dropdown"],
+    #redoc [class*="dropdown"] button,
+    #redoc [class*="dropdown"] div {
+      color: #3A3A3A !important;
+      background-color: #FFFFFF !important;
+      border: 1px solid #CCCCCC !important;
+    }
+    
+    /* Scrollbar - Light theme */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1F1F1; 
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CCCCCC; 
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #999999; 
+    }
+    
+    /* Top Description - Aggressively remove box styling */
+    .api-info {
+      font-family: Arial, sans-serif !important;
+    }
+    .api-info > div,
+    .api-info pre,
+    .api-info code {
+      background-color: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      color: #3A3A3A !important;
+      box-shadow: none !important;
+      font-family: Arial, sans-serif !important;
+      font-size: 14px !important;
+      line-height: 1.6 !important;
+    }
+    
+    /* Payload/Response Tabs - High Contrast */
+    ul[class*="react-tabs__tab-list"] li,
+    [class*="react-tabs__tab"],
+    button[role="tab"] {
+      color: #3A3A3A !important;
+      background-color: #F1F1F1 !important;
+      border: 1px solid #CCCCCC !important;
+      border-bottom: none !important;
+      padding: 6px 12px !important;
+      margin-right: 4px !important;
+      border-radius: 4px 4px 0 0 !important;
+    }
+    
+    ul[class*="react-tabs__tab-list"] li[class*="selected"],
+    [class*="react-tabs__tab--selected"],
+    button[role="tab"][aria-selected="true"] {
+      color: #FFFFFF !important;
+      background-color: #36AF57 !important;
+      font-weight: bold !important;
+      border-color: #36AF57 !important;
+    }
+    
+    /* Specific fix for the "Payload" label if it's just a label */
+    div[class*="MediaType"] > div > span {
+      color: #FFFFFF !important;
+      background-color: #36AF57 !important;
+      padding: 4px 12px !important;
+      border-radius: 12px !important;
+      font-size: 12px !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.5px !important;
+    }
+    
+    /* Remove dark backgrounds from right panel tabs/selectors */
+    div[class*="react-tabs__tab-list"],
+    div[class*="sc-"] {
+        background-color: transparent !important;
+    }
+    
+    /* Fix specific dark boxes (Language selector, etc) */
+    div[style*="background-color: #263238"],
+    div[style*="background-color: rgb(38, 50, 56)"],
+    div[style*="background-color: #323232"],
+    div[style*="background-color: rgb(50, 50, 50)"] {
+      background-color: #F1F1F1 !important;
+      color: #3A3A3A !important;
+      border-bottom: 1px solid #CCCCCC !important;
+    }
+    
+    /* Tables - clean borders */
+    #redoc table,
+    #redoc table td,
+    #redoc table th {
+      border: 1px solid #CCCCCC !important;
+    }
+    #redoc table th {
+      background-color: #F1F1F1 !important;
+      color: #3A3A3A !important;
+    }
+    
+    /* Remove dark backgrounds */
+    #redoc [style*="background-color: #263238"],
+    #redoc [style*="background-color:rgb(38, 50, 56)"],
+    #redoc [class*="iQEJnI"] {
+      background-color: #FFFFFF !important;
+    }
+    
+    /* Right panel - white background */
+    #redoc [class*="rightPanel"],
+    #redoc [class*="icuOYb"] {
+      background-color: #FFFFFF !important;
+    }
+    
+    /* Footer */
+    #redoc [class*="jZkbxm"] {
+      background-color: #F1F1F1 !important;
+      border-top: 1px solid #CCCCCC !important;
+    }
+    #redoc [class*="jZkbxm"] a {
+      color: #3A3A3A !important;
+    }
+    
+    /* Download button - W3Schools green */
+    #redoc button,
+    #redoc [class*="button"] {
+      border: 1px solid #36AF57 !important;
+    }
+    #redoc button:hover,
+    #redoc [class*="button"]:hover {
+      background-color: #36AF57 !important;
+      color: #FFFFFF !important;
+    }
+  </style>
+  <script src="https://cdn.redocly.com/redoc/v2.5.1/bundles/redoc.standalone.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700" rel="stylesheet">
+</head>
+<body>
+  <div id="redoc"></div>
+  <script>
+    const spec = {
+  "openapi": "3.1.0",
+  "basePath": "http://localhost:3000",
+  "info": {
+    "title": "W3Schools Bot API",
+    "version": "1.4.1",
+    "description": "API documentation for the W3Schools Discord Bot study group management system.\n\nThis API enables integration between W3Schools and Discord study groups, allowing\nusers to join study groups through a secure OAuth handoff process.\n\n**Key Features:**\n- Study group management (create, disband, join)\n- Secure OAuth authentication flow\n\n**Authentication:**\n- API Key: Required for study group management endpoints (x-api-key header)\n- OAuth2: Required for user-facing endpoints (Discord authentication)",
+    "contact": {
+      "name": "W3Schools Bot Support"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Development server"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key",
+        "description": "API key for authenticating study group management requests. Must match LEARN_TOGETHER_API_KEY environment variable."
+      },
+      "OAuth2": {
+        "type": "oauth2",
+        "description": "Discord OAuth2 authentication flow for user-facing endpoints",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://discord.com/api/oauth2/authorize",
+            "tokenUrl": "https://discord.com/api/oauth2/token",
+            "scopes": {
+              "identify": "Access user identity information",
+              "guilds.join": "Join Discord servers on behalf of the user"
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Study Groups",
+      "description": "Endpoints for managing Discord study groups"
+    },
+    {
+      "name": "Authentication",
+      "description": "OAuth and authentication flow endpoints"
+    }
+  ],
+  "paths": {
+    "/api/auth-start": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Start the Discord OAuth authentication flow",
+        "description": "Initiates the Discord OAuth authentication process for a user joining a study group.\nThis endpoint is called with a handoff ID that was created during the handoff process.\n\n**Flow:**\n1. Validates the handoff ID from the query parameter\n2. Retrieves stored handoff data (w3sUserId, groupId, groupName)\n3. Fetches CSRF token from Auth.js\n4. Initiates Discord OAuth sign-in flow\n5. Redirects user to Discord for authentication\n\n**Note:** This is an internal endpoint used as part of the OAuth flow and should\nnot be called directly by external clients.\n",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "handoffId",
+            "required": true,
+            "description": "The unique handoff identifier from the handoff process",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "550e8400-e29b-41d4-a716-446655440000"
+            }
+          }
+        ],
+        "responses": {
+          "302": {
+            "description": "Redirects to Discord OAuth authentication page",
+            "headers": {
+              "Location": {
+                "description": "The Discord OAuth authorization URL",
+                "schema": {
+                  "type": "string",
+                  "example": "https://discord.com/oauth2/authorize?..."
+                }
+              },
+              "Set-Cookie": {
+                "description": "Authentication cookies for the OAuth flow",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Missing or invalid handoffId",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "Missing handoffId"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error - Failed to get redirect URL from Auth.js",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "Failed to get redirect URL from Auth.js"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/disband": {
+      "post": {
+        "tags": [
+          "Study Groups"
+        ],
+        "summary": "Disband a study group",
+        "description": "Permanently disbands a Discord study group. This operation removes the group\nfrom the system and cannot be undone. All members will be notified and the\ngroup will be deleted from the database.\n\n**Authentication Required:** This endpoint requires a valid API key in the\n`x-api-key` header matching the `LEARN_TOGETHER_API_KEY` environment variable.\n",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "The study group to disband",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "groupId"
+                ],
+                "properties": {
+                  "groupId": {
+                    "type": "string",
+                    "description": "The unique identifier of the Discord study group to disband",
+                    "example": "123456789012345678"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The study group was successfully disbanded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Indicates whether the operation was successful",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - The request body is missing the required groupId field",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "Missing groupId"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "Unauthorized"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found - The specified groupId does not exist in the system",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "Group not found"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method not allowed - Only POST requests are accepted"
+          }
+        }
+      }
+    },
+    "/api/handoff": {
+      "post": {
+        "tags": [
+          "Study Groups",
+          "Authentication"
+        ],
+        "summary": "Initiate the handoff process for a user joining a study group",
+        "description": "Creates a secure handoff session for a W3Schools user to join a Discord study group.\nThis endpoint generates a unique handoff ID that is stored temporarily (10 minutes)\nand returns a redirect URL that initiates the OAuth authentication flow.\n\n**Flow:**\n1. W3Schools calls this endpoint with user and group information\n2. A handoff ID is generated and stored with the provided data\n3. A redirect URL is returned that points to the authentication start endpoint\n4. The user is redirected to Discord OAuth, then back to complete the join process\n\n**Authentication Required:** This endpoint requires a valid API key in the\n`x-api-key` header matching the `LEARN_TOGETHER_API_KEY` environment variable.\n",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "User and group information for the handoff process",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "w3sUserId",
+                  "groupId",
+                  "groupName"
+                ],
+                "properties": {
+                  "w3sUserId": {
+                    "type": "string",
+                    "description": "The unique identifier of the W3Schools user who wants to join the group",
+                    "example": "w3s_user_12345"
+                  },
+                  "groupId": {
+                    "type": "string",
+                    "description": "The unique identifier of the Discord study group to join",
+                    "example": "123456789012345678"
+                  },
+                  "groupName": {
+                    "type": "string",
+                    "description": "The display name of the study group",
+                    "example": "JavaScript Study Group"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Handoff session created successfully. Returns the redirect URL for OAuth flow.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "redirectUrl": {
+                      "type": "string",
+                      "description": "The URL to redirect the user to for Discord OAuth authentication",
+                      "example": "http://localhost:3000/api/auth-start?handoffId=550e8400-e29b-41d4-a716-446655440000"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - One or more required fields (w3sUserId, groupId, groupName) are missing",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "Missing required fields"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid or missing API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "Unauthorized"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method not allowed - Only POST requests are accepted"
+          },
+          "500": {
+            "description": "Internal server error - Failed to generate the OAuth redirect URL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "Failed to generate OAuth URL"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/join-group": {
+      "post": {
+        "tags": [
+          "Study Groups",
+          "Authentication"
+        ],
+        "summary": "Complete the join process for a study group",
+        "description": "Completes the study group join process after a user has authenticated via Discord OAuth.\nThis endpoint validates the handoff ID, adds the user to the Discord study group,\nnotifies W3Schools of the successful join, and returns the Discord invite URL.\n\n**Flow:**\n1. User is redirected here after completing Discord OAuth authentication\n2. The handoff ID from the authentication flow is validated\n3. User is added to the Discord study group\n4. W3Schools is notified of the successful join\n5. Handoff data is cleaned up and invite URL is returned\n\n**Authentication Required:** User must have a valid Discord OAuth session.\n",
+        "security": [
+          {
+            "OAuth2": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "The handoff ID from the authentication flow",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "handoffId"
+                ],
+                "properties": {
+                  "handoffId": {
+                    "type": "string",
+                    "description": "The unique handoff identifier generated during the handoff process",
+                    "format": "uuid",
+                    "example": "550e8400-e29b-41d4-a716-446655440000"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User successfully joined the study group",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Indicates whether the join operation was successful",
+                      "example": true
+                    },
+                    "inviteUrl": {
+                      "type": "string",
+                      "description": "The Discord invite URL for the study group",
+                      "example": "https://discord.gg/abc123xyz"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - The handoffId is missing, invalid, or has expired (expires after 10 minutes)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "Invalid or expired handoff ID"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - User is not authenticated or session is invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "Unauthorized"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+};
+    const theme = {
+  "colors": {
+    "primary": {
+      "main": "#36AF57"
+    },
+    "text": {
+      "primary": "#3A3A3A",
+      "secondary": "#555555"
+    },
+    "success": {
+      "main": "#36AF57"
+    },
+    "warning": {
+      "main": "#FFA500"
+    },
+    "error": {
+      "main": "#D41F1C"
+    },
+    "http": {
+      "get": "#36AF57",
+      "post": "#186FAF",
+      "put": "#95507C",
+      "patch": "#BF581D",
+      "delete": "#CC3333",
+      "basic": "#707070",
+      "link": "#36AF57",
+      "head": "#A23DAD"
+    },
+    "responses": {
+      "success": {
+        "color": "#36AF57",
+        "backgroundColor": "rgba(54, 175, 87, 0.1)"
+      },
+      "error": {
+        "color": "#D41F1C",
+        "backgroundColor": "rgba(212, 31, 28, 0.1)"
+      }
+    }
+  },
+  "typography": {
+    "fontSize": "14px",
+    "fontFamily": "Arial, sans-serif",
+    "headings": {
+      "fontFamily": "Arial, sans-serif",
+      "fontWeight": "bold",
+      "lineHeight": "1.5"
+    },
+    "code": {
+      "fontSize": "13px",
+      "fontFamily": "'Courier New', Courier, monospace",
+      "lineHeight": "20px",
+      "fontWeight": "400",
+      "backgroundColor": "#F1F1F1",
+      "color": "#3A3A3A",
+      "wrap": false
+    }
+  },
+  "sidebar": {
+    "backgroundColor": "#FFFFFF",
+    "textColor": "#3A3A3A",
+    "activeTextColor": "#36AF57",
+    "groupItems": {
+      "activeBackgroundColor": "#F1F1F1",
+      "activeTextColor": "#36AF57"
+    }
+  },
+  "rightPanel": {
+    "backgroundColor": "#FFFFFF",
+    "textColor": "#3A3A3A"
+  },
+  "scrollbar": {
+    "width": "10px"
+  }
+};
+    const options = {
+      theme: theme,
+      scrollYOffset: 0,
+      hideDownloadButton: false,
+      disableSearch: false,
+      nativeScrollbars: false
+    };
+    
+    Redoc.init(spec, options, document.getElementById('redoc'));
+    
+    // Apply W3Schools branding after Redoc fully renders
+    // Use a debounced approach to avoid performance issues
+    let stylingApplied = false;
+    let timeoutId = null;
+    
+    function applyW3SchoolsBranding() {
+      const redocEl = document.getElementById('redoc');
+      if (!redocEl || redocEl.children.length === 0) return;
+      
+      // Check if Redoc has finished rendering by looking for content
+      const hasContent = redocEl.querySelector('h1, h2, [class*="api-info"]');
+      if (!hasContent) return;
+
+      
+      // Style HTTP method badges - only target operation-type spans
+      redocEl.querySelectorAll('span[class*="operation-type"], span[class*="http-verb"]').forEach(span => {
+        const text = span.textContent?.toLowerCase().trim();
+        const classes = span.className || '';
+        
+        if (text === 'get' || classes.includes('get')) {
+          span.style.cssText = 'background-color: #36AF57 !important; color: #FFFFFF !important;';
+        } else if (text === 'post' || classes.includes('post')) {
+          span.style.cssText = 'background-color: #186FAF !important; color: #FFFFFF !important;';
+        } else if (text === 'put' || classes.includes('put')) {
+          span.style.cssText = 'background-color: #95507C !important; color: #FFFFFF !important;';
+        } else if (text === 'patch' || classes.includes('patch')) {
+          span.style.cssText = 'background-color: #BF581D !important; color: #FFFFFF !important;';
+        } else if (text === 'delete' || classes.includes('delete')) {
+          span.style.cssText = 'background-color: #CC3333 !important; color: #FFFFFF !important;';
+        }
+      });
+      
+      // Style links - only apply if not already styled
+      redocEl.querySelectorAll('a:not([style*="color: rgb(54, 175, 87)"])').forEach(link => {
+        link.style.color = '#36AF57';
+      });
+    }
+    
+    // Debounced observer - only fire after mutations stop
+    const observer = new MutationObserver(() => {
+      if (timeoutId) clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        applyW3SchoolsBranding();
+      }, 300);
+    });
+    
+    // Only observe childList to reduce overhead
+    observer.observe(document.getElementById('redoc'), {
+      childList: true,
+      subtree: false
+    });
+    
+    // Apply after Redoc has time to render
+    setTimeout(() => {
+      applyW3SchoolsBranding();
+      // Keep observer active for dynamic changes
+    }, 1500);
+  </script>
+</body>
+</html>

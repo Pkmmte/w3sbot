@@ -76,7 +76,7 @@ Type=simple
 User=ec2-user
 WorkingDirectory=/home/ec2-user/app
 Environment=NODE_ENV=production
-ExecStart=/bin/bash -c 'source /home/ec2-user/.nvm/nvm.sh && cd /home/ec2-user/app && pnpm run dev'
+ExecStart=/bin/bash -c 'source /home/ec2-user/.nvm/nvm.sh && cd /home/ec2-user/app && pnpm start'
 Restart=always
 RestartSec=10
 

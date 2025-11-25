@@ -1,13 +1,13 @@
 'use client'
 
 import { useSearchParams, useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useSessionState } from '../session-context'
 
-export default function JoinGroupPage() {
+function JoinGroupContent() {
 	const searchParams = useSearchParams()
 	const handoffId = searchParams.get('handoffId')
-	const { status, session } = useSessionState()
+	const { status } = useSessionState()
 	const router = useRouter()
 	const [message, setMessage] = useState('Joining group...')
 
@@ -52,5 +52,13 @@ export default function JoinGroupPage() {
 				<h1>{message}</h1>
 			</section>
 		</div>
+	)
+}
+
+export default function JoinGroupPage() {
+	return (
+		<Suspense fallback={<div className="page"><section className="hero-card"><h1>Loading...</h1></section></div>}>
+			<JoinGroupContent />
+		</Suspense>
 	)
 }
