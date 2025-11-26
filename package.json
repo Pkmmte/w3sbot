@@ -30,6 +30,7 @@
 		"@prisma/client": "^7.0.0",
 		"@robojs/ai": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/ai@e9d283026033ead0edd085c03dfb1fc4069b2bf5",
 		"@robojs/auth": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/auth@2b00d32",
+		"@robojs/cron": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/cron@e9d2830",
 		"@robojs/server": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@2b00d32",
 		"@robojs/xp": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/xp@2b00d32",
 		"better-sqlite3": "^12.4.6",

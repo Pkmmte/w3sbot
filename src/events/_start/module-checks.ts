@@ -19,10 +19,11 @@ const updateModulesStatus = () => {
 }
 
 export default async () => {
-	console.log(process.env.NODE_ENV)
+	/*console.log(process.env.NODE_ENV)
 	try {
 		updateModulesStatus()
 	} catch (error) {
 		console.log(error)
 	}
+	*/
 }

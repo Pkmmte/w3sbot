@@ -20,5 +20,20 @@ export const env = new Env({
 			description: 'Logger level',
 			env: 'LOGGER_LEVEL'
 		}
+	},
+	reputation: {
+		channels: {
+			description: 'Comma-separated list of channel IDs for reputation tracking',
+			env: 'REPUTATION_CHANNELS'
+		},
+		announceChannelId: {
+			description: 'Channel ID for reputation announcements',
+			env: 'REPUTATION_ANNOUNCE_CHANNEL_ID'
+		},
+		reminderCronSchedule: {
+			default: '0 0 * * *',
+			description: 'Cron schedule for reputation reminders',
+			env: 'REPUTATION_REMINDER_CRON_SCHEDULE'
+		}
 	}
 })
