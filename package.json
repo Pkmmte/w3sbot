@@ -38,6 +38,7 @@
 		"croner": "^8.0.0",
 		"discord.js": "^14.25.1",
 		"duckduckgo-search": "^1.0.7",
+		"framer-motion": "^12.23.24",
 		"libsodium-wrappers": "^0.7.15",
 		"next": "15.5.4",
 		"openai": "^6.9.1",
