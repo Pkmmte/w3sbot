@@ -1,67 +1,84 @@
 'use client';
 
-import { DepthContainer, DepthLayer } from './components/depth';
-import { colors, depth } from './lib/tokens';
+import { useState } from 'react';
+import { DepthContainer } from './components/depth';
+import { 
+  DeskSurface, 
+  Textbook, 
+  EventPoster, 
+  SandboxLaptop, 
+  QuizNotepad, 
+  ToolsTray 
+} from './components/desk';
+import { CursorData } from './lib/types';
 
 export default function ActivityPage() {
-  return (
-    <main className="w-full h-screen bg-slate-900 overflow-hidden">
-      <DepthContainer className="flex items-center justify-center">
-        
-        {/* Background Layer - The Desk */}
-        <DepthLayer 
-          z={depth.desk} 
-          className="absolute inset-0 w-full h-full"
-        >
-          <div 
-            className="w-full h-full opacity-80"
-            style={{ backgroundColor: colors.desk.surface }}
-          />
-          {/* Grid pattern to make movement more obvious */}
-          <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:40px_40px]" />
-        </DepthLayer>
+  const [usersInBook] = useState<CursorData[]>([
+    { odId: '1', avatarUrl: 'https://cdn.discordapp.com/embed/avatars/0.png', displayName: 'Alice', position: { x: 0, y: 0 }, context: 'book', state: 'active', lastUpdate: Date.now() },
+    { odId: '2', avatarUrl: 'https://cdn.discordapp.com/embed/avatars/1.png', displayName: 'Ben', position: { x: 0, y: 0 }, context: 'book', state: 'idle', lastUpdate: Date.now() }
+  ]);
+  const [isTimerActive, setIsTimerActive] = useState(false);
 
-        {/* Middle Layer - The Book (Placeholder) */}
-        <DepthLayer 
-          z={depth.objects}
-          className="relative w-64 h-80 rounded-lg"
+  return (
+    <main className="w-full h-screen bg-[#050508] overflow-hidden">
+      <DepthContainer>
+        {/* 
+          The Desk Plane 
+          Everything moves together. We rotate the whole world to look down at the desk.
+        */}
+        <div 
+          className="w-full h-full flex items-center justify-center"
+          style={{ 
+            transformStyle: 'preserve-3d',
+            transform: 'rotateX(25deg) translateY(50px)', // The "Camera Angle"
+          }}
         >
+          {/* The Desk Surface & Objects Container */}
           <div 
-            className="w-full h-full rounded-lg flex items-center justify-center text-white font-bold text-2xl border-l-8 border-white/10"
+            className="relative"
             style={{ 
-              backgroundColor: colors.book.cover,
-              boxShadow: `0 20px 50px ${colors.desk.shadow}`
+              width: 1000, 
+              height: 600, 
+              transformStyle: 'preserve-3d',
             }}
           >
-            <span style={{ color: colors.book.title }}>W3Schools</span>
-          </div>
-        </DepthLayer>
+            {/* 1. The Desk Surface (Background) */}
+            <DeskSurface />
 
-        {/* Foreground Layer - Floating UI */}
-        <DepthLayer 
-          z={depth.foreground}
-          className="absolute top-20 right-20"
-        >
-          <div 
-            className="px-6 py-3 rounded-2xl text-white font-medium shadow-xl border border-white/20 backdrop-blur-md"
-            style={{ backgroundColor: colors.ui.primary }}
-          >
-            Active Users: 3
-          </div>
-        </DepthLayer>
-
-        {/* Foreground Layer - Instructions */}
-        <DepthLayer
-            z={depth.ui}
-            className="absolute bottom-20 left-1/2 -translate-x-1/2"
-        >
-            <div className="text-white text-lg font-medium bg-black/40 px-8 py-4 rounded-full backdrop-blur-md border border-white/10 shadow-2xl">
-                Move cursor to test 3D depth
+            {/* 2. Objects on the Desk */}
+            {/* We use a grid-like absolute positioning relative to the 1000x600 desk */}
+            
+            {/* Center: Textbook */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style={{ transform: 'translateZ(0px)' }}>
+              <Textbook usersInBook={usersInBook} onOpen={() => console.log('Open Book')} />
             </div>
-        </DepthLayer>
 
+            {/* Top Left: Event Poster (Pinned to desk or leaning?) Let's lay it flat-ish */}
+            <div className="absolute top-12 left-12" style={{ transform: 'translateZ(0px) rotateZ(-5deg)' }}>
+              <EventPoster onJoin={() => console.log('Join Event')} />
+            </div>
+
+            {/* Bottom Left: Laptop */}
+            <div className="absolute bottom-12 left-12" style={{ transform: 'translateZ(0px) rotateZ(5deg)' }}>
+              <SandboxLaptop onOpen={() => console.log('Open Sandbox')} />
+            </div>
+
+            {/* Bottom Right: Notepad */}
+            <div className="absolute bottom-12 right-12" style={{ transform: 'translateZ(0px) rotateZ(-3deg)' }}>
+              <QuizNotepad onOpen={() => console.log('Open Quiz')} />
+            </div>
+
+            {/* Top Right: Tools Tray (Maybe floating slightly?) */}
+            <div className="absolute top-12 right-12" style={{ transform: 'translateZ(20px)' }}>
+              <ToolsTray 
+                onTimerClick={() => setIsTimerActive(!isTimerActive)}
+                isTimerActive={isTimerActive}
+              />
+            </div>
+
+          </div>
+        </div>
       </DepthContainer>
     </main>
   );
 }
-
