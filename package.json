@@ -40,7 +40,7 @@
 		"@robojs/cron": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/cron@ef9dd1b",
 		"@robojs/dev": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/dev@e11f183",
 		"@robojs/discordjs": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@50d80c9d3d8a0a41cabe0ae0c8cd6dc233e3c0a7",
-		"@robojs/mock": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/mock@ef9dd1b",
+		"@robojs/mock": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/mock@52d295c",
 		"@robojs/server": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b",
 		"@robojs/xp": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/xp@ef9dd1b",
 		"better-sqlite3": "^12.4.6",
@@ -51,7 +51,7 @@
 		"libsodium-wrappers": "^0.7.15",
 		"next": "15.5.4",
 		"openai": "^6.9.1",
-		"robo.js": "https://pkg.pr.new/Wave-Play/robo.js@e11f183",
+		"robo.js": "https://pkg.pr.new/Wave-Play/robo.js@1394fb2",
 		"selfsigned": "^5.2.0",
 		"toad-scheduler": "^3.1.0"
 	},

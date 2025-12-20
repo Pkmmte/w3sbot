@@ -22,28 +22,28 @@ importers:
         version: 7.0.0(prisma@7.0.0(@types/react@19.2.7)(better-sqlite3@12.4.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3))(typescript@5.9.3)
       '@robojs/ai':
         specifier: https://pkg.pr.new/Wave-Play/robo.js/@robojs/ai@ef9dd1b
-        version: https://pkg.pr.new/Wave-Play/robo.js/@robojs/ai@ef9dd1b(@robojs/discordjs@https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@50d80c9d3d8a0a41cabe0ae0c8cd6dc233e3c0a7(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3)))(@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b)(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3))(ws@8.18.3)(zod@3.25.76)
+        version: https://pkg.pr.new/Wave-Play/robo.js/@robojs/ai@ef9dd1b(@robojs/discordjs@https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@50d80c9d3d8a0a41cabe0ae0c8cd6dc233e3c0a7(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3)))(@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b)(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3))(ws@8.18.3)(zod@3.25.76)
       '@robojs/auth':
         specifier: https://pkg.pr.new/Wave-Play/robo.js/@robojs/auth@ef9dd1b
-        version: https://pkg.pr.new/Wave-Play/robo.js/@robojs/auth@ef9dd1b(@auth/prisma-adapter@2.11.1(@prisma/client@7.0.0(prisma@7.0.0(@types/react@19.2.7)(better-sqlite3@12.4.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3))(typescript@5.9.3)))(@prisma/client@7.0.0(prisma@7.0.0(@types/react@19.2.7)(better-sqlite3@12.4.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3))(typescript@5.9.3))(@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3))
+        version: https://pkg.pr.new/Wave-Play/robo.js/@robojs/auth@ef9dd1b(@auth/prisma-adapter@2.11.1(@prisma/client@7.0.0(prisma@7.0.0(@types/react@19.2.7)(better-sqlite3@12.4.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3))(typescript@5.9.3)))(@prisma/client@7.0.0(prisma@7.0.0(@types/react@19.2.7)(better-sqlite3@12.4.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3))(typescript@5.9.3))(@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3))
       '@robojs/cron':
         specifier: https://pkg.pr.new/Wave-Play/robo.js/@robojs/cron@ef9dd1b
-        version: https://pkg.pr.new/Wave-Play/robo.js/@robojs/cron@ef9dd1b(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3))
+        version: https://pkg.pr.new/Wave-Play/robo.js/@robojs/cron@ef9dd1b(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3))
       '@robojs/dev':
         specifier: https://pkg.pr.new/Wave-Play/robo.js/@robojs/dev@e11f183
-        version: https://pkg.pr.new/Wave-Play/robo.js/@robojs/dev@e11f183(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3))
+        version: https://pkg.pr.new/Wave-Play/robo.js/@robojs/dev@e11f183(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3))
       '@robojs/discordjs':
         specifier: https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@50d80c9d3d8a0a41cabe0ae0c8cd6dc233e3c0a7
-        version: https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@50d80c9d3d8a0a41cabe0ae0c8cd6dc233e3c0a7(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3))
+        version: https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@50d80c9d3d8a0a41cabe0ae0c8cd6dc233e3c0a7(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3))
       '@robojs/mock':
-        specifier: https://pkg.pr.new/Wave-Play/robo.js/@robojs/mock@ef9dd1b
-        version: https://pkg.pr.new/Wave-Play/robo.js/@robojs/mock@ef9dd1b(@swc/core@1.15.3)(typescript@5.9.3)
+        specifier: https://pkg.pr.new/Wave-Play/robo.js/@robojs/mock@52d295c
+        version: https://pkg.pr.new/Wave-Play/robo.js/@robojs/mock@52d295c(@swc/core@1.15.3)(typescript@5.9.3)
       '@robojs/server':
         specifier: https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b
         version: https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b
       '@robojs/xp':
         specifier: https://pkg.pr.new/Wave-Play/robo.js/@robojs/xp@ef9dd1b
-        version: https://pkg.pr.new/Wave-Play/robo.js/@robojs/xp@ef9dd1b(@robojs/discordjs@https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@50d80c9d3d8a0a41cabe0ae0c8cd6dc233e3c0a7(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3)))(@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3))
+        version: https://pkg.pr.new/Wave-Play/robo.js/@robojs/xp@ef9dd1b(@robojs/discordjs@https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@50d80c9d3d8a0a41cabe0ae0c8cd6dc233e3c0a7(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3)))(@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3))
       better-sqlite3:
         specifier: ^12.4.6
         version: 12.4.6
@@ -69,8 +69,8 @@ importers:
         specifier: ^6.9.1
         version: 6.9.1(ws@8.18.3)(zod@3.25.76)
       robo.js:
-        specifier: https://pkg.pr.new/Wave-Play/robo.js@e11f183
-        version: https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3)
+        specifier: https://pkg.pr.new/Wave-Play/robo.js@1394fb2
+        version: https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3)
       selfsigned:
         specifier: ^5.2.0
         version: 5.2.0
@@ -919,12 +919,12 @@ packages:
       discord.js: ^14.0.0
       robo.js: ^0.11.0
 
-  '@robojs/mock@https://pkg.pr.new/Wave-Play/robo.js/@robojs/mock@ef9dd1b':
-    resolution: {tarball: https://pkg.pr.new/Wave-Play/robo.js/@robojs/mock@ef9dd1b}
+  '@robojs/mock@https://pkg.pr.new/Wave-Play/robo.js/@robojs/mock@52d295c':
+    resolution: {tarball: https://pkg.pr.new/Wave-Play/robo.js/@robojs/mock@52d295c}
     version: 0.1.0
 
-  '@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b':
-    resolution: {tarball: https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b}
+  '@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@52d295c4c413a0d26eb225208c3d028d94c584e8':
+    resolution: {tarball: https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@52d295c4c413a0d26eb225208c3d028d94c584e8}
     version: 0.6.6
     peerDependencies:
       fastify: ^4.15.0
@@ -935,8 +935,8 @@ packages:
       vite:
         optional: true
 
-  '@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1ba7b4062fe0b5c7646dc4d11a1565c762c':
-    resolution: {tarball: https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1ba7b4062fe0b5c7646dc4d11a1565c762c}
+  '@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b':
+    resolution: {tarball: https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b}
     version: 0.6.6
     peerDependencies:
       fastify: ^4.15.0
@@ -2221,8 +2221,8 @@ packages:
     resolution: {integrity: sha512-9LkiTwjUh6rT555DtE9rTX+BKByPfrMzEAtnlEtdEwr3Nkffwiihqe2bWADg+OQRjt9gl6ICdmB/ZFDCGAtSow==}
     engines: {node: '>= 4'}
 
-  robo.js@https://pkg.pr.new/Wave-Play/robo.js/robo.js@ef9dd1ba7b4062fe0b5c7646dc4d11a1565c762c:
-    resolution: {tarball: https://pkg.pr.new/Wave-Play/robo.js/robo.js@ef9dd1ba7b4062fe0b5c7646dc4d11a1565c762c}
+  robo.js@https://pkg.pr.new/Wave-Play/robo.js/robo.js@52d295c4c413a0d26eb225208c3d028d94c584e8:
+    resolution: {tarball: https://pkg.pr.new/Wave-Play/robo.js/robo.js@52d295c4c413a0d26eb225208c3d028d94c584e8}
     version: 0.10.32
     engines: {node: '>=18.0.0'}
     hasBin: true
@@ -2238,8 +2238,8 @@ packages:
       typescript:
         optional: true
 
-  robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183:
-    resolution: {tarball: https://pkg.pr.new/Wave-Play/robo.js@e11f183}
+  robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2:
+    resolution: {tarball: https://pkg.pr.new/Wave-Play/robo.js@1394fb2}
     version: 0.10.32
     engines: {node: '>=18.0.0'}
     hasBin: true
@@ -3387,11 +3387,11 @@ snapshots:
     transitivePeerDependencies:
       - ajv
 
-  '@robojs/ai@https://pkg.pr.new/Wave-Play/robo.js/@robojs/ai@ef9dd1b(@robojs/discordjs@https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@50d80c9d3d8a0a41cabe0ae0c8cd6dc233e3c0a7(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3)))(@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b)(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3))(ws@8.18.3)(zod@3.25.76)':
+  '@robojs/ai@https://pkg.pr.new/Wave-Play/robo.js/@robojs/ai@ef9dd1b(@robojs/discordjs@https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@50d80c9d3d8a0a41cabe0ae0c8cd6dc233e3c0a7(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3)))(@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b)(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3))(ws@8.18.3)(zod@3.25.76)':
     dependencies:
-      '@robojs/discordjs': https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@50d80c9d3d8a0a41cabe0ae0c8cd6dc233e3c0a7(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3))
+      '@robojs/discordjs': https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@50d80c9d3d8a0a41cabe0ae0c8cd6dc233e3c0a7(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3))
       openai: 6.9.1(ws@8.18.3)(zod@3.25.76)
-      robo.js: https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3)
+      robo.js: https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3)
     optionalDependencies:
       '@robojs/server': https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b
       discord.js: 14.25.1
@@ -3399,13 +3399,13 @@ snapshots:
       - ws
       - zod
 
-  '@robojs/auth@https://pkg.pr.new/Wave-Play/robo.js/@robojs/auth@ef9dd1b(@auth/prisma-adapter@2.11.1(@prisma/client@7.0.0(prisma@7.0.0(@types/react@19.2.7)(better-sqlite3@12.4.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3))(typescript@5.9.3)))(@prisma/client@7.0.0(prisma@7.0.0(@types/react@19.2.7)(better-sqlite3@12.4.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3))(typescript@5.9.3))(@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3))':
+  '@robojs/auth@https://pkg.pr.new/Wave-Play/robo.js/@robojs/auth@ef9dd1b(@auth/prisma-adapter@2.11.1(@prisma/client@7.0.0(prisma@7.0.0(@types/react@19.2.7)(better-sqlite3@12.4.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3))(typescript@5.9.3)))(@prisma/client@7.0.0(prisma@7.0.0(@types/react@19.2.7)(better-sqlite3@12.4.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3))(typescript@5.9.3))(@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3))':
     dependencies:
       '@auth/core': 0.40.0
       '@robojs/server': https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b
       argon2id: 1.0.1
       nanoid: 5.1.6
-      robo.js: https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3)
+      robo.js: https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3)
       zod: 3.25.76
     optionalDependencies:
       '@auth/prisma-adapter': 2.11.1(@prisma/client@7.0.0(prisma@7.0.0(@types/react@19.2.7)(better-sqlite3@12.4.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.3))(typescript@5.9.3))
@@ -3415,36 +3415,36 @@ snapshots:
       - '@simplewebauthn/server'
       - nodemailer
 
-  '@robojs/cron@https://pkg.pr.new/Wave-Play/robo.js/@robojs/cron@ef9dd1b(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3))':
+  '@robojs/cron@https://pkg.pr.new/Wave-Play/robo.js/@robojs/cron@ef9dd1b(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3))':
     dependencies:
-      '@robojs/discordjs': https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@ef9dd1ba7b4062fe0b5c7646dc4d11a1565c762c(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3))
+      '@robojs/discordjs': https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@ef9dd1ba7b4062fe0b5c7646dc4d11a1565c762c(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3))
       croner: 9.1.0
-      robo.js: https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3)
+      robo.js: https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3)
       uuid: 10.0.0
     transitivePeerDependencies:
       - discord.js
 
-  '@robojs/dev@https://pkg.pr.new/Wave-Play/robo.js/@robojs/dev@e11f183(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3))':
+  '@robojs/dev@https://pkg.pr.new/Wave-Play/robo.js/@robojs/dev@e11f183(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3))':
     dependencies:
-      robo.js: https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3)
+      robo.js: https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3)
     optionalDependencies:
       discord.js: 14.25.1
 
-  '@robojs/discordjs@https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@50d80c9d3d8a0a41cabe0ae0c8cd6dc233e3c0a7(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3))':
+  '@robojs/discordjs@https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@50d80c9d3d8a0a41cabe0ae0c8cd6dc233e3c0a7(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3))':
     dependencies:
       discord.js: 14.25.1
-      robo.js: https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3)
+      robo.js: https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3)
 
-  '@robojs/discordjs@https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@ef9dd1ba7b4062fe0b5c7646dc4d11a1565c762c(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3))':
+  '@robojs/discordjs@https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@ef9dd1ba7b4062fe0b5c7646dc4d11a1565c762c(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3))':
     dependencies:
       discord.js: 14.25.1
-      robo.js: https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3)
+      robo.js: https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3)
 
-  '@robojs/mock@https://pkg.pr.new/Wave-Play/robo.js/@robojs/mock@ef9dd1b(@swc/core@1.15.3)(typescript@5.9.3)':
+  '@robojs/mock@https://pkg.pr.new/Wave-Play/robo.js/@robojs/mock@52d295c(@swc/core@1.15.3)(typescript@5.9.3)':
     dependencies:
-      '@robojs/server': https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1ba7b4062fe0b5c7646dc4d11a1565c762c
+      '@robojs/server': https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@52d295c4c413a0d26eb225208c3d028d94c584e8
       discord-api-types: 0.37.120
-      robo.js: https://pkg.pr.new/Wave-Play/robo.js/robo.js@ef9dd1ba7b4062fe0b5c7646dc4d11a1565c762c(@swc/core@1.15.3)(typescript@5.9.3)
+      robo.js: https://pkg.pr.new/Wave-Play/robo.js/robo.js@52d295c4c413a0d26eb225208c3d028d94c584e8(@swc/core@1.15.3)(typescript@5.9.3)
       ws: 8.18.3
     transitivePeerDependencies:
       - '@swc/core'
@@ -3455,6 +3455,13 @@ snapshots:
       - utf-8-validate
       - vite
 
+  '@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@52d295c4c413a0d26eb225208c3d028d94c584e8':
+    dependencies:
+      ws: 8.18.3
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
   '@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b':
     dependencies:
       ws: 8.18.3
@@ -3462,18 +3469,11 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1ba7b4062fe0b5c7646dc4d11a1565c762c':
+  '@robojs/xp@https://pkg.pr.new/Wave-Play/robo.js/@robojs/xp@ef9dd1b(@robojs/discordjs@https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@50d80c9d3d8a0a41cabe0ae0c8cd6dc233e3c0a7(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3)))(@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3))':
     dependencies:
-      ws: 8.18.3
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-
-  '@robojs/xp@https://pkg.pr.new/Wave-Play/robo.js/@robojs/xp@ef9dd1b(@robojs/discordjs@https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@50d80c9d3d8a0a41cabe0ae0c8cd6dc233e3c0a7(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3)))(@robojs/server@https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3))':
-    dependencies:
-      '@robojs/discordjs': https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@50d80c9d3d8a0a41cabe0ae0c8cd6dc233e3c0a7(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3))
+      '@robojs/discordjs': https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@50d80c9d3d8a0a41cabe0ae0c8cd6dc233e3c0a7(discord.js@14.25.1)(robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3))
       p-limit: 7.2.0
-      robo.js: https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3)
+      robo.js: https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3)
     optionalDependencies:
       '@robojs/server': https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b
 
@@ -4723,12 +4723,12 @@ snapshots:
 
   retry@0.12.0: {}
 
-  robo.js@https://pkg.pr.new/Wave-Play/robo.js/robo.js@ef9dd1ba7b4062fe0b5c7646dc4d11a1565c762c(@swc/core@1.15.3)(typescript@5.9.3):
+  robo.js@https://pkg.pr.new/Wave-Play/robo.js/robo.js@52d295c4c413a0d26eb225208c3d028d94c584e8(@swc/core@1.15.3)(typescript@5.9.3):
     optionalDependencies:
       '@swc/core': 1.15.3
       typescript: 5.9.3
 
-  robo.js@https://pkg.pr.new/Wave-Play/robo.js@e11f183(@swc/core@1.15.3)(typescript@5.9.3):
+  robo.js@https://pkg.pr.new/Wave-Play/robo.js@1394fb2(@swc/core@1.15.3)(typescript@5.9.3):
     optionalDependencies:
       '@swc/core': 1.15.3
       typescript: 5.9.3
