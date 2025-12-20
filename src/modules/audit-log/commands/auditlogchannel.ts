@@ -1,5 +1,6 @@
-import { Flashcore, createCommandConfig } from 'robo.js'
-import type { CommandOptions } from 'robo.js'
+import { createCommandConfig } from '@robojs/discordjs'
+import { Flashcore } from 'robo.js'
+import type { ChatInputCommandInteraction, CommandOptions } from '@robojs/discordjs'
 
 export const config = createCommandConfig({
 	description: 'Sets a channel for audit logs',
@@ -13,7 +14,7 @@ export const config = createCommandConfig({
 	]
 } as const)
 
-export default async (interaction, options: CommandOptions<typeof config>) => {
+export default async (interaction: ChatInputCommandInteraction, options: CommandOptions<typeof config>) => {
 	try {
 		await Flashcore.set(
 			'audit-log-channel',
@@ -22,7 +23,7 @@ export default async (interaction, options: CommandOptions<typeof config>) => {
 				channelId: options.channel.id
 			}),
 			{
-				namespace: interaction.guildId
+				namespace: interaction.guildId!
 			}
 		)
 

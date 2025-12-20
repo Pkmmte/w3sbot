@@ -1,6 +1,7 @@
 import { events, math } from '@robojs/xp'
 import { EmbedBuilder } from 'discord.js'
-import { client, logger } from 'robo.js'
+import { logger } from 'robo.js'
+import { getClient } from '@robojs/discordjs'
 
 /**
  * Level-Up Announcements
@@ -36,7 +37,7 @@ export default async () => {
 			const { guildId, userId, newLevel, totalXp } = event
 
 			// Fetch Discord objects to access user info and channels
-			const guild = await client.guilds.fetch(guildId)
+			const guild = await getClient().guilds.fetch(guildId)
 			const member = await guild.members.fetch(userId)
 
 			// ===== Channel Selection =====

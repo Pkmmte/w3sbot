@@ -13,8 +13,7 @@
 		"allowImportingTsExtensions": true,
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["src/*"],
-			"@prisma-generated/*": [".robo/prisma/*"]
+			"@/*": ["src/*"]
 		},
 		"resolveJsonModule": true,
 		"isolatedModules": true,

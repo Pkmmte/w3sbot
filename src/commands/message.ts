@@ -1,4 +1,5 @@
-import { Flashcore, createCommandConfig } from 'robo.js'
+import { createCommandConfig } from '@robojs/discordjs'
+import { Flashcore } from 'robo.js'
 import {
 	ActionRowBuilder,
 	ChatInputCommandInteraction,

@@ -1,13 +1,13 @@
-import { createCommandConfig } from 'robo.js'
+import { createCommandConfig } from '@robojs/discordjs'
 import { ChatInputCommandInteraction, ActivityType } from 'discord.js'
-import { type CommandOptions } from 'robo.js'
+import { type CommandOptions } from '@robojs/discordjs'
 
 const generateActivities = (): { name: string; value: number }[] => {
-	const activityArray = []
+	const activityArray: { name: string; value: number }[] = []
 
 	for (const key in ActivityType) {
 		if (isNaN(Number(key))) {
-			activityArray.push({ name: key, value: ActivityType[key] })
+			activityArray.push({ name: key, value: ActivityType[key] as unknown as number })
 		}
 	}
 

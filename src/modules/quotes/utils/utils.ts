@@ -3,7 +3,7 @@ import dbService from '../../../db/service/index.js'
 import { QuoteInstance } from '../../../types/types.js'
 import { quotes } from '../data/quotes.js'
 // @ts-ignore
-import { posted_quotes } from '../../../../../statics/posted-quotes.js'
+import { posted_quotes } from '#statics/posted-quotes.js'
 import path from 'path'
 import fs from 'fs'
 import { fileURLToPath } from 'url'
@@ -106,7 +106,7 @@ export const getInpirationalQuoteOfTheDay = async (): Promise<Quote> => {
 
 const getRandomProgrammingQuote = async (): Promise<Quote> => {
 	let availableQuotes = quotes.filter((quote) => !posted_quotes.includes(quote.id))
-	const postedQuotesFilePath = path.join(__dirname, '../../../../../statics/posted-quotes.js')
+	const postedQuotesFilePath = path.join(process.cwd(), 'statics/posted-quotes.js')
 	// If there is no quotes left to post, reset posted quotes
 	if (availableQuotes.length === 0) {
 		console.log('No quotes left to post, resetting posted quotes')

@@ -1,5 +1,5 @@
-import { NodeEngine } from '@robojs/server/engines.js'
-import type { InitOptions } from '@robojs/server/engines.js'
+import { NodeEngine } from '@robojs/server/engines'
+import type { InitOptions } from '@robojs/server/engines'
 
 type NextApp = ReturnType<(typeof import('next'))['default']>
 

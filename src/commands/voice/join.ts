@@ -1,5 +1,6 @@
-import { ChannelType, ChatInputCommandInteraction, PermissionFlagsBits, PermissionsBitField } from 'discord.js'
-import { CommandOptions, createCommandConfig } from 'robo.js'
+import { ChannelType, ChatInputCommandInteraction, PermissionFlagsBits } from 'discord.js'
+import { createCommandConfig } from '@robojs/discordjs'
+import type { CommandOptions } from '@robojs/discordjs'
 import { AI, TokenLimitError } from '@robojs/ai'
 
 /*
@@ -37,7 +38,7 @@ export const config = createCommandConfig({
  */
 export default async (interaction: ChatInputCommandInteraction, options: CommandOptions<typeof config>) => {
 	// Check if the user has the required permissions
-	if (!interaction.memberPermissions.has(PermissionsBitField.Flags.ModerateMembers)) {
+	if (!interaction.memberPermissions?.has(PermissionFlagsBits.ModerateMembers)) {
 		return { content: 'You do not have permission to use this command', ephemeral: true }
 	}
 

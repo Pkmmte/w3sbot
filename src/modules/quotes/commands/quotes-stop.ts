@@ -1,5 +1,5 @@
-import { createCommandConfig } from 'robo.js'
-import type { CommandOptions } from 'robo.js'
+import { ChatInputCommandInteraction, createCommandConfig } from '@robojs/discordjs'
+import type { CommandOptions } from '@robojs/discordjs'
 import { stopAndDeleteQuotesJob } from '../utils/utils.js'
 import { QuoteCategory } from '../../../types/types.js'
 
@@ -23,7 +23,7 @@ export const config = createCommandConfig({
 	]
 } as const)
 
-export default async (event, options: CommandOptions<typeof config>) => {
+export default async (_event: ChatInputCommandInteraction, options: CommandOptions<typeof config>) => {
 	const category = options.category as string
 	try {
 		await stopAndDeleteQuotesJob(category)

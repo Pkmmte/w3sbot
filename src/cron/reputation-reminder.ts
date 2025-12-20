@@ -1,5 +1,5 @@
 import { prisma } from '../core/prisma.js'
-import { client } from 'robo.js'
+import { getClient } from '@robojs/discordjs'
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, TextChannel } from 'discord.js'
 import { reputationLogger, ReputationConfig } from '../core/reputation.js'
 
@@ -23,7 +23,7 @@ export default async () => {
 
 	for (const question of unresolvedQuestions) {
 		try {
-			const channel = (await client.channels.fetch(question.channelId)) as TextChannel
+			const channel = (await getClient().channels.fetch(question.channelId)) as TextChannel
 			if (!channel) continue
 
 			// Fetch the message to reply to

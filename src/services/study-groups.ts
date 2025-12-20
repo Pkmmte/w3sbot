@@ -1,7 +1,7 @@
 import { ChannelType, PermissionFlagsBits, VoiceChannel } from 'discord.js'
 
 import { prisma } from '@/core/prisma.js'
-import { client } from 'robo.js'
+import { getClient } from '@robojs/discordjs'
 
 export class StudyGroupService {
 	static async createStudyGroup(w3sGroupId: string, name: string) {
@@ -101,7 +101,7 @@ export class StudyGroupService {
 
 		// Check if channel exists
 		let channelId = group.channelId
-		const guild = client.guilds.cache.get(process.env.DISCORD_GUILD_ID!)
+		const guild = getClient().guilds.cache.get(process.env.DISCORD_GUILD_ID!)
 		if (!guild) {
 			console.error('Guild not found')
 			return
@@ -137,7 +137,7 @@ export class StudyGroupService {
 				deny: [PermissionFlagsBits.ViewChannel]
 			},
 			{
-				id: client.user!.id,
+				id: getClient().user!.id,
 				allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.Connect, PermissionFlagsBits.ManageChannels]
 			},
 			...userIds.map((id) => ({
@@ -198,7 +198,7 @@ export class StudyGroupService {
 		if (!group) return false
 
 		if (group.channelId) {
-			const guild = client.guilds.cache.get(process.env.DISCORD_GUILD_ID!)
+			const guild = getClient().guilds.cache.get(process.env.DISCORD_GUILD_ID!)
 			const channel = guild?.channels.cache.get(group.channelId)
 			if (channel) {
 				await channel.delete()

@@ -1,6 +1,8 @@
 import { AI, TokenLimitError } from '@robojs/ai'
-import { AttachmentBuilder, CommandInteraction } from 'discord.js'
-import { createCommandConfig, type CommandOptions, type CommandResult, logger } from 'robo.js'
+import { AttachmentBuilder } from 'discord.js'
+import { createCommandConfig } from '@robojs/discordjs'
+import type { ChatInputCommandInteraction, CommandOptions, CommandResult } from '@robojs/discordjs'
+import { logger } from 'robo.js'
 
 /*
   AI Image Generation Command
@@ -33,7 +35,7 @@ export const config = createCommandConfig({
  * - Converts provider outputs (base64 or temporary URLs) to AttachmentBuilder instances.
  */
 export default async (
-	interaction: CommandInteraction,
+	interaction: ChatInputCommandInteraction,
 	options: CommandOptions<typeof config>
 ): Promise<CommandResult> => {
 	const prompt = options.prompt?.trim()

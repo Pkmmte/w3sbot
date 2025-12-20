@@ -1,5 +1,5 @@
 import { leaderboard } from '@robojs/xp'
-import { createCommandConfig } from 'robo.js'
+import { createCommandConfig } from '@robojs/discordjs'
 import { ChatInputCommandInteraction, Colors } from 'discord.js'
 import { ReputationConfig } from '../../core/reputation.js'
 

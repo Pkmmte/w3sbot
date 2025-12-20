@@ -2,7 +2,7 @@ import Discord from '@robojs/auth/providers/discord'
 import EmailPassword from '@robojs/auth/providers/email-password'
 import { createPrismaAdapter } from '@robojs/auth'
 import { PrismaBetterSqlite3 } from '@prisma/adapter-better-sqlite3'
-import { PrismaClient } from '@prisma-generated/client'
+import { PrismaClient } from '#prisma'
 import type { AuthPluginOptions } from '@robojs/auth'
 
 export const prisma = new PrismaClient({ adapter: new PrismaBetterSqlite3({ url: process.env.DATABASE_URL! }) })

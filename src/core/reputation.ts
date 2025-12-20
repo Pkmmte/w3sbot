@@ -1,5 +1,5 @@
 import { logger } from 'robo.js'
-import { client } from 'robo.js'
+import { getClient } from '@robojs/discordjs'
 import { TextChannel, EmbedBuilder, Colors } from 'discord.js'
 
 export const reputationLogger = logger.fork('reputation')
@@ -27,7 +27,7 @@ export async function announceReputationChange(_guildId: string, userId: string,
 	if (!ReputationConfig.announceChannelId) return
 
 	try {
-		const channel = await client.channels.fetch(ReputationConfig.announceChannelId) as TextChannel
+		const channel = await getClient().channels.fetch(ReputationConfig.announceChannelId) as TextChannel
 		if (!channel) {
 			reputationLogger.warn(`Announcement channel ${ReputationConfig.announceChannelId} not found`)
 			return

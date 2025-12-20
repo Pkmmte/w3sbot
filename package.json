@@ -3,11 +3,17 @@
 	"version": "1.4.1",
 	"main": "index.js",
 	"license": "MIT",
+	"imports": {
+		"#prisma": "./.robo/prisma/client.js",
+		"#prisma/*": "./.robo/prisma/*",
+		"#statics/*": "./statics/*"
+	},
 	"scripts": {
 		"build": "npm run build:prisma && robo build",
 		"build:prisma": "node scripts/build-prisma.js",
 		"deploy": "robo deploy",
-		"dev": "robo dev",
+		"dev": "robo dev --hmr",
+		"dev:mock": "robo dev --hmr --mock",
 		"doctor": "robo doctor",
 		"invite": "robo invite",
 		"lint": "npm lint:eslint && npm lint:style",
@@ -21,18 +27,22 @@
 		"generate:openapi": "tsx scripts/generate-openapi.ts && tsx scripts/generate-redoc-html.ts",
 		"sync": "rsync -avz --exclude 'node_modules' -e \"ssh -i ./infrastructure/w3schools.pem\" . ec2-user@16.170.230.177:/home/ec2-user/app",
 		"start": "robo start --mode production",
-		"mbuild": "node migration.js && robo build"
+		"mbuild": "node migration.js && robo build",
+		"test": "robo mock test"
 	},
 	"dependencies": {
 		"@auth/prisma-adapter": "^2.11.1",
 		"@discordjs/voice": "^0.19.0",
 		"@prisma/adapter-better-sqlite3": "^7.0.0",
 		"@prisma/client": "^7.0.0",
-		"@robojs/ai": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/ai@e9d283026033ead0edd085c03dfb1fc4069b2bf5",
-		"@robojs/auth": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/auth@2b00d32",
-		"@robojs/cron": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/cron@e9d2830",
-		"@robojs/server": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@2b00d32",
-		"@robojs/xp": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/xp@2b00d32",
+		"@robojs/ai": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/ai@ef9dd1b",
+		"@robojs/auth": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/auth@ef9dd1b",
+		"@robojs/cron": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/cron@ef9dd1b",
+		"@robojs/dev": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/dev@e11f183",
+		"@robojs/discordjs": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/discordjs@50d80c9d3d8a0a41cabe0ae0c8cd6dc233e3c0a7",
+		"@robojs/mock": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/mock@ef9dd1b",
+		"@robojs/server": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/server@ef9dd1b",
+		"@robojs/xp": "https://pkg.pr.new/Wave-Play/robo.js/@robojs/xp@ef9dd1b",
 		"better-sqlite3": "^12.4.6",
 		"cheerio": "^1.1.2",
 		"croner": "^8.0.0",
@@ -41,7 +51,8 @@
 		"libsodium-wrappers": "^0.7.15",
 		"next": "15.5.4",
 		"openai": "^6.9.1",
-		"robo.js": "https://pkg.pr.new/Wave-Play/robo.js@e9d2830",
+		"robo.js": "https://pkg.pr.new/Wave-Play/robo.js@e11f183",
+		"selfsigned": "^5.2.0",
 		"toad-scheduler": "^3.1.0"
 	},
 	"devDependencies": {

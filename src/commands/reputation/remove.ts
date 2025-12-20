@@ -1,5 +1,6 @@
 import { XP } from '@robojs/xp'
-import { createCommandConfig, type CommandOptions } from 'robo.js'
+import { createCommandConfig } from '@robojs/discordjs'
+import type { CommandOptions } from '@robojs/discordjs'
 import { ChatInputCommandInteraction, User, PermissionFlagsBits } from 'discord.js'
 import { ReputationConfig, announceReputationChange } from '../../core/reputation.js'
 

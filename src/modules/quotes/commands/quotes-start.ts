@@ -1,5 +1,5 @@
-import { createCommandConfig } from 'robo.js'
-import type { CommandOptions } from 'robo.js'
+import { createCommandConfig } from '@robojs/discordjs'
+import type { ChatInputCommandInteraction, CommandOptions } from '@robojs/discordjs'
 import { createOrStartQuotesJob } from '../utils/utils.js'
 import { QuoteInstance, QuoteCategory } from '../../../types/types.js'
 
@@ -43,7 +43,7 @@ export const config = createCommandConfig({
 	]
 } as const)
 
-export default async (event, options: CommandOptions<typeof config>) => {
+export default async (event: ChatInputCommandInteraction, options: CommandOptions<typeof config>) => {
 	const channelId = (options.channel as string).replace(/[<>\#]/g, '')
 	const category = options.category as QuoteCategory
 	const time = Number(options.time)
@@ -51,12 +51,12 @@ export default async (event, options: CommandOptions<typeof config>) => {
 	const data: QuoteInstance = {
 		channelId: channelId,
 		category: category,
-		isRunning: 1,
+		isRunning: true,
 		cronId: category as string,
 		cronHour: time
 	}
 
-	const success = createOrStartQuotesJob(data, event)
+	const success = await createOrStartQuotesJob(data, event)
 	if (success) {
 		return { content: `Quotes instance for category ${category} started`, ephemeral: true }
 	} else {

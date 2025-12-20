@@ -1,6 +1,7 @@
 import { XP } from '@robojs/xp'
-import { createCommandConfig, type CommandOptions } from 'robo.js'
-import { ChatInputCommandInteraction, Colors, User } from 'discord.js'
+import { createCommandConfig } from '@robojs/discordjs'
+import type { CommandOptions } from '@robojs/discordjs'
+import { ChatInputCommandInteraction, Colors } from 'discord.js'
 import { ReputationConfig } from '../../core/reputation.js'
 
 export const config = createCommandConfig({

@@ -1,5 +1,5 @@
-import { createCommandConfig } from 'robo.js'
-import type { CommandOptions } from 'robo.js'
+import { createCommandConfig } from '@robojs/discordjs'
+import type { ChatInputCommandInteraction, CommandOptions } from '@robojs/discordjs'
 import { portal } from 'robo.js'
 import { Modules } from '../types/types.js'
 
@@ -38,7 +38,7 @@ export const config = createCommandConfig({
 	]
 } as const)
 
-export default async (event, options: CommandOptions<typeof config>) => {
+export default async (_interaction: ChatInputCommandInteraction, options: CommandOptions<typeof config>) => {
 	try {
 		const module = options.module as string
 		const state = Boolean(Number(options.state))

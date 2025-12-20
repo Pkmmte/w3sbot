@@ -1,7 +1,7 @@
-import { CommandOptions } from 'robo.js'
+import { CommandOptions, createCommandConfig } from '@robojs/discordjs'
 import { CommandInteraction } from 'discord.js'
 
-export const config: CommandOptions = {
+export const config = createCommandConfig({
 	description: 'Disband a study group',
 	options: [
 		{
@@ -11,9 +11,9 @@ export const config: CommandOptions = {
 			required: true
 		}
 	]
-}
+} as const)
 
-export default async (interaction: CommandInteraction, options: { group_id: string }) => {
+export default async (_interaction: CommandInteraction, options: CommandOptions<typeof config>) => {
 	const { group_id } = options
 
 	const response = await fetch(`${process.env.NEXTAUTH_URL || 'http://localhost:3000'}/api/disband`, {
